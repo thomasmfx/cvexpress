@@ -31,6 +31,8 @@ font: inherit;
 
 :root {
   --color-one: #212529;
+  --color-two: #f3f7f8;
+  --color-three: #f3f7f841;
 }
 
 /* || Document */
@@ -38,4 +40,43 @@ font: inherit;
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--color-one);
+}
+
+/* || Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .7em;
+  color: var(--color-two);
+  background-color: var(--color-one);
+}
+
+.header .slogan {
+  display: flex;
+  gap: .5em;
+  font-size: .7rem;
+}
+
+.header .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2em;
+}
+
+.actions .action {
+  background: none;
+  border: none;
+  color: var(--color-two);
+  padding: .5em;
+  border-radius: .5em;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.action.highlight {
+  background-color: var(--color-three);
+  transition: .3s ease-in-out;
 }
