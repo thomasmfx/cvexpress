@@ -32,7 +32,7 @@ font: inherit;
 :root {
   --color-one: #212529;
   --color-two: #f3f7f8;
-  --color-three: #f3f7f841;
+  --color-three: #9a9a9a65;
 }
 
 /* || Document */
@@ -40,6 +40,10 @@ font: inherit;
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: var(--color-one);
+}
+
+body {
+  height: 100dvh;
 }
 
 /* || Header */
@@ -52,31 +56,160 @@ font: inherit;
   color: var(--color-two);
   background-color: var(--color-one);
 }
-
 .header .slogan {
   display: flex;
   gap: .5em;
   font-size: .7rem;
 }
 
-.header .actions {
+.actions {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: .2em;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
 }
-
 .actions .action {
   background: none;
   border: none;
   color: var(--color-two);
   padding: .5em;
-  border-radius: .5em;
+  border-radius: 50px;
   cursor: pointer;
   transition: .3s ease-in-out;
 }
 
-.action.highlight {
-  background-color: var(--color-three);
+.highlight {
+  background-color: var(--color-one);
   transition: .3s ease-in-out;
+}
+
+.toolbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin: auto;
+  margin-bottom: 2em;
+  max-width: fit-content;
+  border-radius: 100px;
+  background-color: white;
+}
+
+/* || Main */
+
+.main {
+  min-height: 100%;
+  width: 100vw;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .8em;
+  color: var(--color-one);
+  border-bottom: 1px solid var(--color-three);
+}
+
+.form-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid var(--color-three);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em 0 1em;
+  flex-basis: 100%;
+}
+.input-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.input {
+  border: 1px solid var(--color-three);
+  border-radius: 5px;
+  padding: .3em;
+}
+
+.skills-form {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-rows: 1fr min-content;
+}
+
+.skills-button,
+.skill-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: .6em;
+  border: 2px solid var(--color-one);
+  color: white;
+  font-weight: 500;
+  background: var(--color-one);
+  border-radius: 10px;
+  min-width: 80px;
+}
+
+.skills-button {
+  margin-right: 1em;
+}
+
+.is-adding-skill {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.skills-button.cancel-skill {
+  background: none;
+  color: var(--color-one);
+}
+
+.add-skill {
+  justify-self: end;
+  display: flex;
+  gap: .5em;
+}
+
+.skills {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.skill-card {
+  justify-content: space-around;
+  gap: .8em;
+  background: none;
+  color: var(--color-one);
+}
+
+.remove-skill {
+  border: none;
+  background: none;
+}
+
+.skill-input {
+  padding: 1em;
+  padding-top: 0;
 }
