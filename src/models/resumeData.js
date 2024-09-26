@@ -97,7 +97,25 @@ let education = [
   }
 ];
 
-let skills = ['HTML', 'CSS', 'Javascript', 'Jest', 'Webpack', 'React'];
+let skillsData = [
+  { id: crypto.randomUUID(), title: 'HTML' },
+  { id: crypto.randomUUID(), title: 'CSS' },
+  { id: crypto.randomUUID(), title: 'Javascript' },
+  { id: crypto.randomUUID(), title: 'Jest' },
+  { id: crypto.randomUUID(), title: 'Webpack' },
+  { id: crypto.randomUUID(), title: 'React' },
+];
+
+function getSkillsData() {
+  let storedLocal = localStorage.getItem('skills');
+  if (storedLocal) return JSON.parse(storedLocal);
+  return skillsData;
+}
+
+function updateSkillsData(newSkillsData) {
+  skillsData = newSkillsData;
+  localStorage.setItem('skills', JSON.stringify(skillsData));
+}
 
 let languages = [];
 
@@ -105,6 +123,7 @@ export  {
   contactInformation,
   experience,
   education,
-  skills,
-  languages
+  languages,
+  getSkillsData,
+  updateSkillsData
 }
