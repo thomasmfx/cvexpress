@@ -1,9 +1,24 @@
-export default function Input({label, type}) {
+export default function Input({label, type, value, onChange}) {
   return (
     <>
       <label className="input-wrapper">
-        <span className="input-label">{label}</span>
-        <input className="input" type={type} />
+        <p className="input-label">{label}</p>
+        {onChange
+        ?
+        <input 
+          className="input" 
+          type={type} 
+          value={value}
+          onChange={e => onChange(e)}
+        />
+        :
+        <input 
+          className="input" 
+          type={type} 
+          value={value}
+        />
+        }
+        
       </label>
     </>
   )

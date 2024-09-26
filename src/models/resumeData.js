@@ -1,11 +1,11 @@
 let contactInformation = [
   {
-    label: 'First Name',
+    label: 'First name',
     inputType: 'text',
     value: ''
   },
   {
-    label: 'Last Name',
+    label: 'Last name',
     inputType: 'text',
     value: ''
   },
@@ -38,7 +38,7 @@ let contactInformation = [
 
 let experience = [
   {
-    label: 'Position',
+    label: 'Job position',
     inputType: 'text',
     value: ''
   },
@@ -53,17 +53,17 @@ let experience = [
     value: ''
   },
   {
-    label: 'Job Description',
+    label: 'Job description',
     inputType: 'textarea',
     value: ''
   },
   {
-    label: 'Start Date',
+    label: 'Start date',
     inputType: 'date',
     value: ''
   },
   {
-    label: 'End Date',
+    label: 'End date',
     inputType: 'date',
     value: ''
   }
@@ -86,12 +86,12 @@ let education = [
     value: ''
   },
   {
-    label: 'Start Date',
+    label: 'Start date',
     inputType: 'date',
     value: ''
   },
   {
-    label: 'End Date',
+    label: 'End date',
     inputType: 'date',
     value: ''
   }

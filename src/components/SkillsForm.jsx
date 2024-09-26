@@ -1,6 +1,7 @@
 import { X, Plus } from "lucide-react"
 import { useState } from "react"
 import { getSkillsData, updateSkillsData }  from "../models/resumeData"
+import Input from "./Input";
 
 function SkillsList({skills, onDeleteSkill}) {
   return (
@@ -58,10 +59,13 @@ export default function SkillsForm() {
       {isAddingSkill 
         ?
         <>
-          <label className="input-wrapper skill-input">
-              <span className="input-label">Skill</span>
-              <input className="input" type='text' value={skillBeingAdded} onChange={handleSkillBeingAdded}/>
-          </label>
+          <Input
+            className='input'
+            label='Skill'
+            type='text'
+            value={skillBeingAdded}
+            onChange={handleSkillBeingAdded}
+          />
           <div className="is-adding-skill">
             <button className="skills-button cancel-skill" onClick={handleIsAddingSkill}>
               Cancel

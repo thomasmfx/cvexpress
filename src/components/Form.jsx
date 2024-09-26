@@ -11,7 +11,7 @@ export default function Form({title, children}) {
   return (
     <div className="form-wrapper" >
       <div className="form-header" onClick={handleDisplayForm}>
-        <p className="form-title">{title}</p>
+        <h2 className="form-title">{title}</h2>
         <ChevronUp
           className="form-arrow" 
           size='28px' 
