@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Eye, Palette, Download, Pencil } from 'lucide-react';
-import { contactInformation, experience, education } from "./models/resumeData";
 import Header from "./components/Header"
 import TabButton from "./components/TabButton";
 import Toolbar from "./components/Toolbar";
-import Form from "./components/Form";
+import FormWrapper from "./components/FormWrapper";
 import Input from "./components/Input";
 import SkillsForm from "./components/SkillsForm";
+import CVdata from "./models/CVdata";
 
 const tabs = [
   {
@@ -29,10 +29,16 @@ const tabs = [
 
 function App() {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
+  const [data, setData] = useState({...CVdata})
 
   function handleChangeTab(newTab) {
     setCurrentTab(newTab)
   };
+
+  function handleSetData(data, dataId, newValue) {
+    CVdata.updateValue(data, dataId, newValue)
+    setData({...CVdata})
+  }
 
   return (
     <>
@@ -50,36 +56,48 @@ function App() {
       </Toolbar>
       <Header />
       <main className="main">
-        <Form title={'Contact information'} >
-          {contactInformation.map((field) =>
-            <Input
-              key={field.label} 
-              label={field.label}
-              type={field.inputType}
-            />
+        <FormWrapper title={'Contact information'}>
+          {data.contact.map((eachField) =>
+            eachField.data.map((data) =>
+              <Input 
+                key={data.id}
+                label={data.label}
+                type={data.inputType}
+                value={data.value}
+                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
+              />
+            )
           )}
-        </Form>
-        <Form title={'Experience'} >
-          {experience.map((field) =>
-            <Input
-              key={field.label} 
-              label={field.label}
-              type={field.inputType}
-            />
+        </FormWrapper>
+        <FormWrapper title={'Experience'}>
+          {data.experience.map((eachField) =>
+            eachField.data.map((data) =>
+              <Input 
+                key={data.id}
+                label={data.label}
+                type={data.inputType}
+                value={data.value}
+                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
+              />
+            )
           )}
-        </Form>
-        <Form title={'Education'} >
-          {education.map((field) =>
-            <Input
-              key={field.label} 
-              label={field.label}
-              type={field.inputType}
-            />
+        </FormWrapper>
+        <FormWrapper title={'Education'}>
+          {data.education.map((eachField) =>
+            eachField.data.map((data) =>
+              <Input 
+                key={data.id}
+                label={data.label}
+                type={data.inputType}
+                value={data.value}
+                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
+              />
+            )
           )}
-        </Form>
-        <Form title={'Skills'} >
+        </FormWrapper>
+        <FormWrapper title={'Skills'} >
           <SkillsForm />
-        </Form>
+        </FormWrapper> 
       </main>
     </>
   )
