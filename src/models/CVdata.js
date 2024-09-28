@@ -5,9 +5,9 @@ import { newSkill } from "./helpers/skills"
 import { newLanguage } from "./helpers/languages"
 
 const CVdata = (() => {
-  let contact = newContact();
-  let experience = [ newExperience() ];
-  let education = [ newExperience() ];
+  let contact = checkStored('contact', newContact())
+  let experience = checkStored('experience', newExperience())
+  let education = checkStored('education', newExperience())
   let skills = [  ];
   let languages = [  ];
 
@@ -23,10 +23,12 @@ const CVdata = (() => {
   }
 
   function updateValue(data, fieldId, newValue) {
-    this[`${data}`].data.map((field) => {
-      if (field.id === fieldId) {
-        field.value = newValue
-      }
+    this[`${data}`].map((eachField) => {
+      eachField.data.map((field) => {
+        if (field.id === fieldId) {
+          return field.value = newValue
+        }
+      })
     })
     store(data, this[`${data}`])
   }
@@ -49,6 +51,12 @@ function store(name, data) {
 
 function retriveStore(name) {
   return JSON.parse(localStorage.getItem(name));
+}
+
+function checkStored(storedName, replace) {
+  let stored = retriveStore(storedName)
+  if (stored != undefined) return stored;
+  return [ replace ];
 }
 
 export default CVdata

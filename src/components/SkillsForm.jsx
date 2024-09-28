@@ -1,6 +1,6 @@
 import { X, Plus } from "lucide-react"
 import { useState } from "react"
-import { getSkillsData, updateSkillsData }  from "../models/resumeData"
+import CVdata from "../models/CVdata"
 import Input from "./Input";
 
 function SkillsList({skills, onDeleteSkill}) {
@@ -19,7 +19,7 @@ function SkillsList({skills, onDeleteSkill}) {
 }
 
 export default function SkillsForm() {
-  const [skills, setSkills] = useState(getSkillsData());
+  const [skills, setSkills] = useState(CVdata.getData('skills'));
   const [isAddingSkill, setIsAddingSkill] = useState(false);
   const [skillBeingAdded, setSkillBeingAdded] = useState('');
 
@@ -33,7 +33,7 @@ export default function SkillsForm() {
 
   function handleSaveSkill(e) {
     e.preventDefault()
-    updateSkillsData([
+    CVdata.updateData('skills', [
       ...skills,
       {
         id: crypto.randomUUID(),
@@ -42,12 +42,12 @@ export default function SkillsForm() {
     ])
 
     setSkillBeingAdded('');
-    setSkills(getSkillsData());
+    setSkills(CVdata.getData('skills'));
   }
 
   function handleDeleteSkill(itemId) {
-    updateSkillsData(skills.filter(item => item.id !== itemId))
-    setSkills(getSkillsData());
+    CVdata.updateData('skills', skills.filter(item => item.id !== itemId))
+    setSkills(CVdata.getData('skills'));
   }
 
   return (
