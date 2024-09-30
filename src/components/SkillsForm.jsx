@@ -5,12 +5,12 @@ import Input from "./Input";
 
 function SkillsList({skills, onDeleteSkill}) {
   return (
-    <ul className="skills">
+    <ul className="cards-wrapper">
     {skills.map((skill) => 
-      <li className="skill-card" key={skill.id}>  
+      <li className="card skill-card" key={skill.id}>  
         <span>{skill.title}</span>
-        <button className="remove-skill" onClick={() => onDeleteSkill(skill.id)}>
-          <X style={{cursor: 'pointer'}} />
+        <button className="remove-card" onClick={() => onDeleteSkill(skill.id)}>
+          <X style={{cursor: 'pointer'}}/>
         </button>
       </li>
       )}
@@ -51,7 +51,7 @@ export default function SkillsForm() {
   }
 
   return (
-    <div className="skills-form">
+    <form className="form">
       <SkillsList 
         skills={skills} 
         onDeleteSkill={handleDeleteSkill}
@@ -66,21 +66,21 @@ export default function SkillsForm() {
             value={skillBeingAdded}
             onChange={handleSkillBeingAdded}
           />
-          <div className="is-adding-skill">
-            <button className="skills-button cancel-skill" onClick={handleIsAddingSkill}>
+          <div className="typing">
+            <button className="button-two" onClick={handleIsAddingSkill}>
               Cancel
             </button>
-            <button className="skills-button save-skill" onClick={handleSaveSkill}>
+            <button className="button-one" onClick={handleSaveSkill}>
               Save
             </button>
           </div>
         </>
         : 
-        <button className="skills-button add-skill" onClick={handleIsAddingSkill}>
+        <button className="button-one" onClick={handleIsAddingSkill}>
           <Plus />
           <span>Add skill</span>
         </button>
       }
-    </div>
+    </form>
   )
 }

@@ -104,12 +104,11 @@ body {
   width: 100vw;
 }
 
-.form-wrapper {
+.dropdown {
   display: flex;
   flex-direction: column;
 }
-
-.form-header {
+.dropdown-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -117,23 +116,30 @@ body {
   color: var(--color-one);
   border-bottom: 1px solid var(--color-three);
 }
-
-.form-title {
+.dropdown-title {
   font-size: 1.2rem;
   font-weight: 500;
 }
+.dropdown-content {
+  display: grid;
+  row-gap: 1em;
+  border-bottom: 1px solid var(--color-three);
+  padding: 1.5em;
+}
+.dropdown-arrow {
+  transition: .3s ease-in-out;
+}
 
 .form {
-  display: flex;
-  flex-wrap: wrap;
-  padding-bottom: 1.5em;
-  border-bottom: 1px solid var(--color-three);
+  flex-basis: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  gap: 1em;
 }
 
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  padding: 1em 1em 0 1em;
   flex-basis: 100%;
 }
 .input-label {
@@ -146,14 +152,33 @@ body {
   padding: .3em;
 }
 
-.skills-form {
-  flex-basis: 100%;
-  display: grid;
-  grid-template-rows: 1fr min-content;
+.cards-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  max-width: 60ch;
+}
+.cards-wrapper:not(:has(:first-child)) {
+  display: none;
+}
+.card {
+  background: none;
+  color: var(--color-one);
+  padding: .6em;
+  border: 2px solid var(--color-one);
+  border-radius: 10px;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8em;
+  font-weight: 500;
 }
 
-.skills-button,
-.skill-card {
+.button-one,
+.button-two {
   display: flex;
   justify-content: space-around;
   align-items: center;
