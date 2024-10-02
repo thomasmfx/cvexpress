@@ -4,15 +4,10 @@ export function newContact(data) {
   return {
     id: crypto.randomUUID(),
     data: {
-      firstName: {
-        title: 'First name',
+      fullName: {
+        title: 'Full name',
         inputType: 'text',
-        value: validateProperty(data, 'firstName')
-      },
-      lastName: { 
-        title: 'Last name',
-        inputType: 'text',
-        value: validateProperty(data, 'lastName')
+        value: validateProperty(data, 'fullName')
       },
       address: {
         title: 'Address',

@@ -4,20 +4,15 @@ export function newEducation(data) {
   return {
     id: crypto.randomUUID(),
     data: {
-      institution: {
+      school: {
         title: 'Institution',
         inputType: 'text',
-        value: validateProperty(data, 'institution')
+        value: validateProperty(data, 'school')
       },
-      course: {
-        title: 'Course',
+      degree: {
+        title: 'Degree',
         inputType: 'text',
-        value: validateProperty(data, 'course')
-      },
-      location: {
-        title: 'Location',
-        inputType: 'text',
-        value: validateProperty(data, 'location')
+        value: validateProperty(data, 'degree')
       },
       startDate: {
         title: 'Start date',
