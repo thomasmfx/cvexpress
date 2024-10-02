@@ -5,6 +5,7 @@ import Input from "./Input";
 import ExperienceList from "./ExperienceList";
 import SkillsList from "./SkillsList";
 import EducationList from "./EducationList";
+import LanguagesList from "./LanguagesList";
 
 function verifyChildren(listName, data, onEdit, onDelete) {
   switch (listName) {
@@ -28,6 +29,13 @@ function verifyChildren(listName, data, onEdit, onDelete) {
         <EducationList
           data={data}
           onEdit={onEdit}
+          onDelete={onDelete}
+        />
+      )
+    case 'language':
+      return (
+        <LanguagesList
+          data={data}
           onDelete={onDelete}
         />
       )

@@ -57,7 +57,14 @@ function App() {
             data={'skillSet'} 
             defaultData={newSkill()} 
             listName='skill'
-            />
+          />
+        </Dropdown> 
+        <Dropdown title={'Languages'} >
+          <Form 
+            data={'spokenLanguages'} 
+            defaultData={newLanguage()} 
+            listName='language'
+          />
         </Dropdown> 
       </main>
     </>
