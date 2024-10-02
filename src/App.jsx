@@ -40,9 +40,16 @@ function App() {
       <main className="main">
         <Dropdown title={'Experience'}>
           <Form 
-            data={'experienceList'} 
-            defaultData={newExperience()} 
+            data={'experienceList'}
+            defaultData={newExperience()}
             listName='experience'
+          />
+        </Dropdown>
+        <Dropdown title={'Education'}>
+          <Form 
+            data={'educationHistory'} 
+            defaultData={newEducation()} 
+            listName='education'
           />
         </Dropdown>
         <Dropdown title={'Skills'} >

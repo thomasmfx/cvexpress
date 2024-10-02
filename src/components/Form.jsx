@@ -4,6 +4,7 @@ import Data from "../models/Data"
 import Input from "./Input";
 import ExperienceList from "./ExperienceList";
 import SkillsList from "./SkillsList";
+import EducationList from "./EducationList";
 
 function verifyChildren(listName, data, onEdit, onDelete) {
   switch (listName) {
@@ -22,12 +23,20 @@ function verifyChildren(listName, data, onEdit, onDelete) {
           onDelete={onDelete}
         />
       )
+    case 'education':
+      return (
+        <EducationList
+          data={data}
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
+      )
     default:
       return null;
   }
 }
 
-export default function Form({data, defaultData, listName, children}) {
+export default function Form({data, defaultData, listName}) {
   const [currentData, setCurrentData] = useState(() => Data.getDataList(data));
   const [formData, setFormData] = useState(defaultData);
   const [displayForm, setDisplayForm] = useState(false);
@@ -44,8 +53,6 @@ export default function Form({data, defaultData, listName, children}) {
   }
 
   function handleSaveData(e) {
-    console.log(data)
-    console.log(formData)
     e.preventDefault();
     if (isEditing) {
       Data.editDataEntry(data, formData.id, formData);
@@ -80,13 +87,13 @@ export default function Form({data, defaultData, listName, children}) {
     <form className="form">
     {displayForm ? (
       <>
-        {Object.entries(formData.data).map(([key, value]) => (
+        {Object.entries(formData.data).map(([key, data]) => (
           <Input
             key={key}
             className="input"
-            label={value.title}
-            type={value.inputType}
-            value={value.value}
+            label={data.title}
+            type={data.inputType}
+            value={data.value}
             onChange={(e) => handleSetFormData(e, key)}
           />
         ))}
@@ -103,11 +110,6 @@ export default function Form({data, defaultData, listName, children}) {
     )}
     </form>
     {verifyChildren(listName, currentData, editEntry, deleteEntry)}
-    {/* <CardList 
-      data={currentData}
-      onEdit={editEntry}
-      onDelete={deleteEntry}
-    /> */}
     </>
   )
 }

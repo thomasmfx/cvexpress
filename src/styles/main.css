@@ -249,12 +249,48 @@ body {
     margin-right: 1em;
   }
 
-  & .card-buttons-wrapper {
+  /* & .card-buttons-wrapper {
     grid-column: -2 / -1;
     grid-row: 1 / -1;
     align-self: start;
     display: flex;
     flex-direction: column;
     gap: .5em;
+  } */
+}
+
+.card-buttons-wrapper {
+  grid-column: -2 / -1;
+  grid-row: 1 / -1;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.education-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr min-content;
+  grid-template-rows: repeat(3, min-content);
+  gap: 0;
+
+  & .school {
+    grid-column: 1 / -2;
+    grid-row: 1 / 2;
+  }
+
+  & .degree {
+    grid-column: 1 / -2;
+    grid-row: 2 / 3;
+    font-size: .9rem;
+
+  }
+
+  & .date-info {
+    grid-column: 1 / -2;
+    grid-row: 3 / -1;
+    font-size: .9rem;
+
   }
 }
