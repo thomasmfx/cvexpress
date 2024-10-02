@@ -189,53 +189,72 @@ body {
   background: var(--color-one);
   border-radius: 10px;
   min-width: 80px;
-}
-
-.skills-button {
-  margin-right: 1em;
-}
-
-.is-adding-skill {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-top: 1em;
-}
-
-.skills-button.cancel-skill {
-  background: none;
-  color: var(--color-one);
-}
-
-.add-skill {
   justify-self: end;
   display: flex;
   gap: .5em;
 }
-
-.skills {
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding: 1em;
-  margin-bottom: 1em;
-}
-
-.skill-card {
-  justify-content: space-around;
-  gap: .8em;
+.button-two {
   background: none;
   color: var(--color-one);
 }
 
-.remove-skill {
-  border: none;
+.card-button {
   background: none;
+  border: none;
+  cursor: pointer;
+  min-width: 24px;
 }
 
-.skill-input {
-  padding: 1em;
-  padding-top: 0;
+.typing {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr min-content;
+  grid-template-rows: repeat(3, min-content);
+  gap: 0;
+
+  & .job-position {
+    grid-column: 1 / 2;
+  }
+
+  & .company {
+    grid-column: 1 / 2;
+    font-size: .9rem;
+  }
+
+  & .date-info {
+    grid-column: 2 / 3;
+    display: flex;
+    justify-self: end;
+    margin-right: 1em;
+  }
+
+  & .location {
+    grid-column: 2 / 3;
+    justify-self: end;
+    margin-right: 1em;
+    font-size: .9rem;
+  }
+
+  & .description {
+    padding-top: 1em;
+    grid-column: 1 / 3;
+    white-space: pre-wrap;
+    font-family: inherit;
+    margin-right: 1em;
+  }
+
+  & .card-buttons-wrapper {
+    grid-column: -2 / -1;
+    grid-row: 1 / -1;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+  }
 }

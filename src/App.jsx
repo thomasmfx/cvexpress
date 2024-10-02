@@ -1,12 +1,18 @@
 import { useState } from "react"
 import { Eye, Palette, Download, Pencil } from 'lucide-react';
+import { newContact } from "./models/helpers/contact"
+import { newEducation } from "./models/helpers/education"
+import { newExperience } from "./models/helpers/experience"
+import { newSkill } from "./models/helpers/skills"
+import { newLanguage } from "./models/helpers/languages"
 import Header from "./components/Header"
 import TabButton from "./components/TabButton";
 import Toolbar from "./components/Toolbar";
-import FormWrapper from "./components/FormWrapper";
-import Input from "./components/Input";
-import SkillsForm from "./components/SkillsForm";
-import CVdata from "./models/CVdata";
+import Dropdown from "./components/Dropdown";
+import SkillsList from "./components/SkillsList";
+import Form from "./components/Form";
+import Data from "./models/Data";
+import ExperienceList from "./components/ExperienceList";
 
 const tabs = [
   {
@@ -28,76 +34,24 @@ const tabs = [
 ];
 
 function App() {
-  const [currentTab, setCurrentTab] = useState(tabs[0]);
-  const [data, setData] = useState({...CVdata})
-
-  function handleChangeTab(newTab) {
-    setCurrentTab(newTab)
-  };
-
-  function handleSetData(data, dataId, newValue) {
-    CVdata.updateValue(data, dataId, newValue)
-    setData({...CVdata})
-  }
-
   return (
     <>
-      <Toolbar>
-        {tabs.map((tab) => 
-          <TabButton
-            key={tab.name}
-            tab={tabs.name}
-            isCurrentTab={currentTab === tab.name} 
-            handleClick={() => handleChangeTab(tab.name)}
-          >
-            {tab.icon}
-          </TabButton>
-        )}
-      </Toolbar>
       <Header />
       <main className="main">
-        <FormWrapper title={'Contact information'}>
-          {data.contact.map((eachField) =>
-            eachField.data.map((data) =>
-              <Input 
-                key={data.id}
-                label={data.label}
-                type={data.inputType}
-                value={data.value}
-                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
-              />
-            )
-          )}
-        </FormWrapper>
-        <FormWrapper title={'Experience'}>
-          {data.experience.map((eachField) =>
-            eachField.data.map((data) =>
-              <Input 
-                key={data.id}
-                label={data.label}
-                type={data.inputType}
-                value={data.value}
-                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
-              />
-            )
-          )}
-        </FormWrapper>
-        <FormWrapper title={'Education'}>
-          {data.education.map((eachField) =>
-            eachField.data.map((data) =>
-              <Input 
-                key={data.id}
-                label={data.label}
-                type={data.inputType}
-                value={data.value}
-                onChange={(e) => handleSetData('contact', data.id, e.target.value)}
-              />
-            )
-          )}
-        </FormWrapper>
-        <FormWrapper title={'Skills'} >
-          <SkillsForm />
-        </FormWrapper> 
+        <Dropdown title={'Experience'}>
+          <Form 
+            data={'experienceList'} 
+            defaultData={newExperience()} 
+            listName='experience'
+          />
+        </Dropdown>
+        <Dropdown title={'Skills'} >
+          <Form 
+            data={'skillSet'} 
+            defaultData={newSkill()} 
+            listName='skill'
+            />
+        </Dropdown> 
       </main>
     </>
   )
