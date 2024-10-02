@@ -13,6 +13,7 @@ import SkillsList from "./components/SkillsList";
 import Form from "./components/Form";
 import Data from "./models/Data";
 import ExperienceList from "./components/ExperienceList";
+import ContactForm from "./components/ContactForm";
 
 const tabs = [
   {
@@ -38,6 +39,9 @@ function App() {
     <>
       <Header />
       <main className="main">
+        <Dropdown title={'Contact Information'}>
+          <ContactForm />
+        </Dropdown>
         <Dropdown title={'Experience'}>
           <Form 
             data={'experienceList'}
