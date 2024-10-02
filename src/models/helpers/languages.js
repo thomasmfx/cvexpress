@@ -1,7 +1,19 @@
-export function newLanguage(language, proficiency) {
+import validateProperty from './validation';
+
+export function newLanguage(data) {
   return {
     id: crypto.randomUUID(),
-    language: language,
-    proficiency: proficiency
-  }
+    data: {
+      language: {
+        title: 'Language',
+        inputType: 'text',
+        value: validateProperty(data, 'language'),
+      },
+      proficiency: {
+        title: 'Proficiency',
+        inputType: 'text',
+        value: validateProperty(data, 'language')
+      }
+    }
+  };
 }

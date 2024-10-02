@@ -1,37 +1,34 @@
-export function newEducation() {
+import validateProperty from './validation';
+
+export function newEducation(data) {
   return {
     id: crypto.randomUUID(),
-    data: [
-      {
-        id: crypto.randomUUID(),
-        label: 'Institution',
+    data: {
+      institution: {
+        title: 'Institution',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'institution')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Course',
+      course: {
+        title: 'Course',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'course')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Location',
+      location: {
+        title: 'Location',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'location')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Start date',
+      startDate: {
+        title: 'Start date',
         inputType: 'date',
-        value: ''
+        value: validateProperty(data, 'startDate')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'End date',
+      endDate: {
+        title: 'End date',
         inputType: 'date',
-        value: ''
+        value: validateProperty(data, 'endDate')
       }
-    ]
+    }
   };
 }

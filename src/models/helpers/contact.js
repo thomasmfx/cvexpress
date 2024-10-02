@@ -1,49 +1,44 @@
-export function newContact() {
+import validateProperty from './validation';
+
+export function newContact(data) {
   return {
     id: crypto.randomUUID(),
-    data: [
-      {
-        id: crypto.randomUUID(),
-        label: 'First name',
+    data: {
+      firstName: {
+        title: 'First name',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'firstName')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Last name',
+      lastName: { 
+        title: 'Last name',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'lastName')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Address',
+      address: {
+        title: 'Address',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'address')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Phone',
+      phone: {
+        title: 'Phone',
         inputType: 'tel',
-        value: ''
+        value: validateProperty(data, 'phone')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Email',
+      email: {
+        title: 'Email',
         inputType: 'email',
-        value: ''
+        value: validateProperty(data, 'email')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'LinkedIn',
+      linkedIn: {
+        title: 'LinkedIn',
         inputType: 'url',
-        value: ''
+        value: validateProperty(data, 'linkedIn')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'GitHub',
+      github: {
+        title: 'GitHub',
         inputType: 'url',
-        value: ''
+        value: validateProperty(data, 'github')
       }
-    ]
-  }
+    }
+  };
 }

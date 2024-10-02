@@ -1,15 +1,14 @@
-export function newSkill(name) {
+import validateProperty from './validation';
+
+export function newSkill(data) {
   return {
     id: crypto.randomUUID(),
-    name: name
-  }
+    data: {
+      skill: {
+        title: 'Skill',
+        inputType: 'text',
+        value: validateProperty(data, 'skill')
+      }
+    }
+  };
 }
-
-// let skillsData = [
-//   { id: crypto.randomUUID(), title: 'HTML' },
-//   { id: crypto.randomUUID(), title: 'CSS' },
-//   { id: crypto.randomUUID(), title: 'Javascript' },
-//   { id: crypto.randomUUID(), title: 'Jest' },
-//   { id: crypto.randomUUID(), title: 'Webpack' },
-//   { id: crypto.randomUUID(), title: 'React' },
-// ];

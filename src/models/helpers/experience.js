@@ -1,43 +1,39 @@
-export function newExperience() {
+import validateProperty from './validation';
+
+export function newExperience(data) {
   return {
     id: crypto.randomUUID(),
-    data: [
-      {
-        id: crypto.randomUUID(),
-        label: 'Job position',
+    data: {
+      jobPosition: {
+        title: 'Job position',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'jobPosition')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Company',
+      company: {
+        title: 'Company',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'company')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Location',
+      location: {
+        title: 'Location',
         inputType: 'text',
-        value: ''
+        value: validateProperty(data, 'location')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Job description',
+      description: {
+        title: 'Description',
         inputType: 'textarea',
-        value: ''
+        value: validateProperty(data, 'description')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'Start date',
+      startDate: {
+        title: 'Start date',
         inputType: 'date',
-        value: ''
+        value: validateProperty(data, 'startDate')
       },
-      {
-        id: crypto.randomUUID(),
-        label: 'End date',
+      endDate: {
+        title: 'End date',
         inputType: 'date',
-        value: ''
+        value: validateProperty(data, 'endDate')
       }
-    ]
-  }
+    }
+  };
 }
