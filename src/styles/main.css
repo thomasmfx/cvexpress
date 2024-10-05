@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* || Reset */
 
 *, *::before, *::after {
@@ -104,9 +107,19 @@ body {
   width: 100vw;
 }
 
+@media (min-width: 1024px) {
+  .main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    align-content: start;
+  }
+}
+
 .dropdown {
   display: flex;
   flex-direction: column;
+  border-right: 1px solid var(--color-three);
 }
 .dropdown-header {
   display: flex;
@@ -311,6 +324,104 @@ body {
 
     & :not(.data) {
       font-size: .8rem;
+    }
+  }
+}
+
+
+
+/* || PDF */
+
+.pdf {
+  font-family: Poppins;
+  display: grid;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 2em;
+  padding: 3em;
+  display: grid;
+  justify-items: center;
+  color: black;
+
+  .highlight {
+    color: #007e72;
+    background: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    padding: 1em 0 1em 0;
+    width: 100%;
+  }
+
+  .name {
+    font-size: 2rem;
+    padding-top: 1em;
+    padding-bottom: .5em;
+  }
+
+  .contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2em;
+
+    .info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 1rem;
+    }
+  }
+
+  .education {
+    
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content;
+
+      .school {
+        font-weight: 600;
+      }
+
+      .degree {
+        grid-row: 2 / -1;
+        grid-column: 1 / 2;
+      }
+
+      .date-info {
+        justify-self: end;
+        grid-row: 2 / -1;
+      }
+    }
+  }
+
+  .experience {
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, min-content);
+    }
+
+    .job-position {
+      font-weight: 600;
+    }
+
+    .date-info {
+      justify-self: end;
+    }
+
+    .location {
+      justify-self: end;
+    }
+
+    .description {
+      margin-top: 1em;
     }
   }
 }

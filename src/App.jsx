@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Eye, Palette, Download, Pencil } from 'lucide-react';
+import { PDFViewer } from '@react-pdf/renderer';
 import { newContact } from "./models/helpers/contact"
 import { newEducation } from "./models/helpers/education"
 import { newExperience } from "./models/helpers/experience"
@@ -14,6 +15,7 @@ import Form from "./components/Form";
 import Data from "./models/Data";
 import ExperienceList from "./components/ExperienceList";
 import ContactForm from "./components/ContactForm";
+import { MyDocument } from "./components/ResumePDF";
 
 const tabs = [
   {
@@ -39,37 +41,42 @@ function App() {
     <>
       <Header />
       <main className="main">
-        <Dropdown title={'Contact Information'}>
-          <ContactForm />
-        </Dropdown>
-        <Dropdown title={'Experience'}>
-          <Form 
-            data={'experienceList'}
-            defaultData={newExperience()}
-            listName='experience'
-          />
-        </Dropdown>
-        <Dropdown title={'Education'}>
-          <Form 
-            data={'educationHistory'} 
-            defaultData={newEducation()} 
-            listName='education'
-          />
-        </Dropdown>
-        <Dropdown title={'Skills'} >
-          <Form 
-            data={'skillSet'} 
-            defaultData={newSkill()} 
-            listName='skill'
-          />
-        </Dropdown> 
-        <Dropdown title={'Languages'} >
-          <Form 
-            data={'spokenLanguages'} 
-            defaultData={newLanguage()} 
-            listName='language'
-          />
-        </Dropdown> 
+        <section className={'section-form'}>
+          <Dropdown title={'Contact Information'}>
+            <ContactForm />
+          </Dropdown>
+          <Dropdown title={'Experience'}>
+            <Form
+              data={'experienceList'}
+              defaultData={newExperience()}
+              listName='experience'
+            />
+          </Dropdown>
+          <Dropdown title={'Education'}>
+            <Form
+              data={'educationHistory'}
+              defaultData={newEducation()}
+              listName='education'
+            />
+          </Dropdown>
+          <Dropdown title={'Skills'} >
+            <Form
+              data={'skillSet'}
+              defaultData={newSkill()}
+              listName='skill'
+            />
+          </Dropdown>
+          <Dropdown title={'Languages'} >
+            <Form
+              data={'spokenLanguages'}
+              defaultData={newLanguage()}
+              listName='language'
+            />
+          </Dropdown>
+        </section>
+        <section className="section-resume">
+          <MyDocument/>
+        </section>
       </main>
     </>
   )
