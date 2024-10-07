@@ -45,9 +45,42 @@ font: inherit;
   color: var(--color-one);
 }
 
+#root {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  align-content: start;
+}
+
 body {
   height: 100dvh;
 }
+
+/* || Main */
+
+.main {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.section-resume {
+  align-self: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .section-form {
+    border-right: 1px solid var(--color-three);
+  }
+}
+
 
 /* || Header */
 
@@ -100,26 +133,9 @@ body {
   background-color: white;
 }
 
-/* || Main */
-
-.main {
-  min-height: 100%;
-  width: 100vw;
-}
-
-@media (min-width: 1024px) {
-  .main {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    align-content: start;
-  }
-}
-
 .dropdown {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--color-three);
 }
 .dropdown-header {
   display: flex;
@@ -228,7 +244,7 @@ body {
 .experience-card {
   display: grid;
   grid-template-columns: 1fr 1fr min-content;
-  grid-template-rows: repeat(3, min-content);
+  grid-template-rows: repeat(2, min-content);
   gap: 0;
 
   & .job-position {
@@ -282,11 +298,11 @@ body {
 }
 
 .education-card {
-  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr min-content;
+  grid-template-columns: 1fr min-content;
   grid-template-rows: repeat(3, min-content);
   gap: 0;
+  column-gap: 1em;
 
   & .school {
     grid-column: 1 / -2;
@@ -340,7 +356,10 @@ body {
   padding: 3em;
   display: grid;
   justify-items: center;
+  align-content: start;
   color: black;
+  max-width: 900px;
+  min-height: 1100px;
 
   .highlight {
     color: #007e72;
@@ -356,10 +375,12 @@ body {
     width: 100%;
   }
 
+  .section-title {
+    justify-self: start;
+  }
+
   .name {
     font-size: 2rem;
-    padding-top: 1em;
-    padding-bottom: .5em;
   }
 
   .contact {
@@ -368,44 +389,63 @@ body {
     justify-content: center;
     align-items: center;
     padding-bottom: 2em;
+    gap: .5em;
 
     .info {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       font-size: 1rem;
+      white-space: pre-wrap;
+   
+
+      .contact-text:not(:last-child):after {
+        content: ' • ';
+      }
     }
   }
 
-  .education {
+  .education-history {
     
-    .info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: min-content;
+    .education-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
 
-      .school {
-        font-weight: 600;
-      }
+      .education {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content;
 
-      .degree {
-        grid-row: 2 / -1;
-        grid-column: 1 / 2;
-      }
+        .school {
+          font-weight: 600;
+        }
 
-      .date-info {
-        justify-self: end;
-        grid-row: 2 / -1;
+        .degree {
+          grid-row: 2 / -1;
+          grid-column: 1 / 2;
+        }
+
+        .date-info {
+          justify-self: end;
+          grid-row: 2 / -1;
+        }
       }
     }
   }
 
   .experience {
 
-    .info {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(3, min-content);
+    .experiences {
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
+
+      .experience {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, min-content);
+      }
     }
 
     .job-position {
@@ -414,6 +454,7 @@ body {
 
     .date-info {
       justify-self: end;
+      display: flex;
     }
 
     .location {
@@ -421,7 +462,47 @@ body {
     }
 
     .description {
-      margin-top: 1em;
+      margin-top: .5em;
     }
+  }
+
+  .section.skills {
+    display: grid;
+    grid-template-rows: auto;
+
+    ul.skills-list {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      
+      li.skill {
+        list-style: none;
+        padding: 0;
+      }
+      
+      li.skill:before {
+        content: '• ';
+      }
+    } 
+  }
+
+  .section.languages {
+    display: grid;
+    grid-template-rows: auto;
+
+    ul.languages-list {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      
+      li.language {
+        list-style: none;
+        padding: 0;
+      }
+      
+      li.language:before {
+        content: '• ';
+      }
+    } 
   }
 }
