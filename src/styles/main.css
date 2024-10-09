@@ -98,41 +98,6 @@ body {
   font-size: .7rem;
 }
 
-.actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1em;
-  gap: 1em;
-}
-.actions .action {
-  background: none;
-  border: none;
-  color: var(--color-two);
-  padding: .5em;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: .3s ease-in-out;
-}
-
-.highlight {
-  background-color: var(--color-one);
-  transition: .3s ease-in-out;
-}
-
-.toolbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  margin: auto;
-  margin-bottom: 2em;
-  max-width: fit-content;
-  border-radius: 100px;
-  background-color: white;
-}
-
 .dropdown {
   display: flex;
   flex-direction: column;
@@ -187,7 +152,7 @@ body {
   align-content: center;
   flex-wrap: wrap;
   gap: 1em;
-  max-width: 60ch;
+  width: 100%;
 }
 .cards-wrapper:not(:has(:first-child)) {
   display: none;
@@ -221,6 +186,7 @@ body {
   justify-self: end;
   display: flex;
   gap: .5em;
+  cursor: pointer;
 }
 .button-two {
   background: none;
@@ -309,7 +275,7 @@ body {
     grid-row: 1 / 2;
   }
 
-  & .degree {
+  & .course {
     grid-column: 1 / -2;
     grid-row: 2 / 3;
     font-size: .9rem;
@@ -324,11 +290,11 @@ body {
 }
 
 .contact-card {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: .5em;
+  padding-right: 3em;
 
   & .link {
     color: inherit;
@@ -421,7 +387,7 @@ body {
           font-weight: 600;
         }
 
-        .degree {
+        .course {
           grid-row: 2 / -1;
           grid-column: 1 / 2;
         }

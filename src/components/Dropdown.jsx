@@ -9,7 +9,7 @@ export default function Dropdown({title, children}) {
   };
 
   return (
-    <section className="dropdown" >
+    <div className="dropdown" >
       <div className="dropdown-header" onClick={handleDisplayContent}>
         <h2 className="dropdown-title">{title}</h2>
         <ChevronUp
@@ -28,6 +28,6 @@ export default function Dropdown({title, children}) {
           {children} 
         </div>
       }
-  </section>
+  </div>
   )
 }

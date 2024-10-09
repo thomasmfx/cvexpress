@@ -1,5 +1,5 @@
 import { PencilLine, X } from "lucide-react"
-import Card from './Card'
+import Card from "../Card"
 
 export default function ExperienceList({data, onEdit, onDelete}) {
   return (
@@ -14,12 +14,17 @@ export default function ExperienceList({data, onEdit, onDelete}) {
           </div>
           <p className="company">{experience.data.company.value}</p>
           <p className="location">{experience.data.location.value}</p>
-          <pre className="description">{experience.data.description.value.trim()}</pre>
           <div className="card-buttons-wrapper">
-            <button className="card-button remove" onClick={() => onDelete(experience.id)}>
+            <button 
+              className="card-button remove" 
+              onClick={() => onDelete('experienceList', experience.id)}
+            >
               <X/>
             </button>
-            <button className="card-button edit" onClick={() => onEdit(experience.id)}>
+            <button 
+              className="card-button edit" 
+              onClick={(e) => onEdit(e, experience)}
+            >
               <PencilLine/>
             </button>
           </div>

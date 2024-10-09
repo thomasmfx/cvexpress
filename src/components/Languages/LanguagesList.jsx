@@ -1,5 +1,5 @@
 import { X } from "lucide-react"
-import Card from "./Card";
+import Card from "../Card"
 
 export default function LanguagesList({data, onDelete}) {
   return (
@@ -9,7 +9,7 @@ export default function LanguagesList({data, onDelete}) {
         <p>
           {entry.data.language.value} - {entry.data.proficiency.value}
         </p>
-        <button className="card-button remove" onClick={() => onDelete(entry.id)}>
+        <button className="card-button remove" onClick={() => onDelete('spokenLanguages', entry.id)}>
           <X/>
         </button>
       </Card>
