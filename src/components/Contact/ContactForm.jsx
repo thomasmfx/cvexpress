@@ -5,18 +5,26 @@ import ContactCard from "./ContactCard";
 
 export default function ContactForm({contactInfo, onSave}) {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [formData, setFormData] = useState(contactInfo.data);
+  const [formData, setFormData] = useState(contactInfo);
  
   function toggleIsFormVisible() {
     setIsFormVisible(!isFormVisible)
     if (!isFormVisible) {
-      setFormData(contactInfo.data);
+      setFormData(contactInfo);
     }
   }
 
   function updateFormData(e, key) {
-    let copy = {...formData}
-    copy[key] = {...copy[key], value: e.target.value};
+    const copy = {
+      ...formData,
+      data: {
+        ...formData.data,
+        [key]: {
+          ...formData.data[key],
+          value: e.target.value
+        }
+      }
+    }
     setFormData(copy);
   }
   
@@ -31,7 +39,7 @@ export default function ContactForm({contactInfo, onSave}) {
     <form className="form" onSubmit={handleFormSubmit}>
     {isFormVisible ? (
       <>
-        {Object.entries(formData).map(([key, data]) => (
+        {Object.entries(formData.data).map(([key, data]) => (
           <Input
             key={key}
             label={data.title}
@@ -67,6 +75,9 @@ export default function ContactForm({contactInfo, onSave}) {
       </button>
     )}
     </form>
+    <ContactCard
+      data={contactInfo.data}
+    />
     </>
   )
 }

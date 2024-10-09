@@ -1,10 +1,10 @@
-import { Newspaper, Plus } from "lucide-react"
+import { Plus } from "lucide-react"
 import { useState } from "react"
 import { newSkill } from "../../models/helpers/skills";
 import Input from "../Input";
 import SkillsList from "./SkillsList";
 
-export default function SkillsForm({data, onSave, onDelete}){
+export default function SkillsForm({data, onSave, onEdit, onDelete}){
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState(newSkill());
   const [isEditing, setIsEditing] = useState(false);
@@ -18,7 +18,7 @@ export default function SkillsForm({data, onSave, onDelete}){
   }
 
   function handleFormChange(e, key) {
-    let copy = {
+    const copy = {
       ...formData,
       data: {
         ...formData.data,
@@ -91,11 +91,11 @@ export default function SkillsForm({data, onSave, onDelete}){
       Add Skill
     </button>
     )}
+    </form>
     <SkillsList
       data={data}
       onDelete={onDelete}
     />
-    </form>
     </>
   )
 }

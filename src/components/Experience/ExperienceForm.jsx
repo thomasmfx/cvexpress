@@ -18,7 +18,7 @@ export default function ExperienceForm({data, onSave, onEdit, onDelete}){
   }
 
   function handleFormChange(e, key) {
-    let copy = {
+    const copy = {
       ...formData,
       data: {
         ...formData.data,
@@ -91,12 +91,12 @@ export default function ExperienceForm({data, onSave, onEdit, onDelete}){
       Add Experience
     </button>
     )}
+    </form>
     <ExperienceList
       data={data}
       onEdit={handleEditing}
       onDelete={onDelete}
     />
-    </form>
     </>
   )
 }

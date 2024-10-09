@@ -18,7 +18,7 @@ export default function LanguagesForm({data, onSave, onEdit, onDelete}){
   }
 
   function handleFormChange(e, key) {
-    let copy = {
+    const copy = {
       ...formData,
       data: {
         ...formData.data,
@@ -91,11 +91,11 @@ export default function LanguagesForm({data, onSave, onEdit, onDelete}){
       Add Language
     </button>
     )}
+    </form>
     <LanguagesList
       data={data}
       onDelete={onDelete}
     />
-    </form>
     </>
   )
 }

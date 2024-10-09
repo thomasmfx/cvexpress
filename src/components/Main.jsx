@@ -2,24 +2,11 @@ import { useState } from "react"
 import Data from "../models/Data"
 import Resume from "./Resume";
 import Dropdown from "./Dropdown";
-import ContactCard from "./Contact/ContactCard";
 import ContactForm from "./Contact/ContactForm";
 import ExperienceForm from "./Experience/ExperienceForm";
 import EducationForm from "./Education/EducationForm";
 import SkillsForm from "./Skills/SkillsForm";
 import LanguagesForm from "./Languages/LanguagesForm";
-
-function Button({className, textContent, onClick, type}) {
-  return (
-    <button 
-      className={className}
-      type={type}
-      onClick={(e) => onClick}
-    >
-      {textContent}
-    </button>
-  )
-}
 
 export default function Main() {
   const [resumeData, setResumeData] = useState(Data);
@@ -50,9 +37,6 @@ export default function Main() {
           <ContactForm
             contactInfo={resumeData.contactInformation[0]}
             onSave={editEntry}
-          />
-          <ContactCard
-            data={resumeData.contactInformation[0].data}
           />
         </Dropdown>
         <Dropdown title={'Experience'}>
