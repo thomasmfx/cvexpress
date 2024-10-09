@@ -26,12 +26,12 @@ export function newContact(data) {
       },
       linkedIn: {
         title: 'LinkedIn',
-        inputType: 'url',
+        inputType: 'text',
         value: validateProperty(data, 'linkedIn')
       },
       github: {
         title: 'GitHub',
-        inputType: 'url',
+        inputType: 'text',
         value: validateProperty(data, 'github')
       }
     }

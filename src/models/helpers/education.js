@@ -9,19 +9,19 @@ export function newEducation(data) {
         inputType: 'text',
         value: validateProperty(data, 'school')
       },
-      degree: {
-        title: 'Degree',
+      course: {
+        title: 'Course',
         inputType: 'text',
-        value: validateProperty(data, 'degree')
+        value: validateProperty(data, 'course')
       },
       startDate: {
         title: 'Start date',
-        inputType: 'date',
+        inputType: 'text',
         value: validateProperty(data, 'startDate')
       },
       endDate: {
         title: 'End date',
-        inputType: 'date',
+        inputType: 'text',
         value: validateProperty(data, 'endDate')
       }
     }

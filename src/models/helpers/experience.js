@@ -19,19 +19,14 @@ export function newExperience(data) {
         inputType: 'text',
         value: validateProperty(data, 'location')
       },
-      description: {
-        title: 'Description',
-        inputType: 'textarea',
-        value: validateProperty(data, 'description')
-      },
       startDate: {
         title: 'Start date',
-        inputType: 'date',
+        inputType: 'text',
         value: validateProperty(data, 'startDate')
       },
       endDate: {
         title: 'End date',
-        inputType: 'date',
+        inputType: 'text',
         value: validateProperty(data, 'endDate')
       }
     }

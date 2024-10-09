@@ -12,7 +12,7 @@ export function newLanguage(data) {
       proficiency: {
         title: 'Proficiency',
         inputType: 'text',
-        value: validateProperty(data, 'language')
+        value: validateProperty(data, 'proficiency')
       }
     }
   };
