@@ -20,9 +20,11 @@ export default function ContactList({data}) {
       {hasEntries && data.map((contact) => 
         <Card classes={["contact-card"]} key={contact.id}>
           {Object.entries(contact.data).map(([key, value]) =>
-            <ContactSection key={key}>
-              <p className={`${key} data`}>{value.value}</p>
-            </ContactSection>
+            value.value && (
+              <ContactSection key={key}>
+                <p className={`${key} data`}>{value.value}</p>
+              </ContactSection>
+            )
           )}
         </Card>
       )}
