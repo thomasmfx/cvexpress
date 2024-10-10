@@ -1,15 +1,17 @@
 export default function Input({label, type, value, onChange}) {
   return (
     <>
-      <label className="input-wrapper">
-        <p className="input-label">{label}</p>
-        <input 
+      <div className="input-wrapper">
+        <label htmlFor={label} className="input-label">{label}</label>
+        <input
+          autoComplete="on"
+          id={label}
           className="input" 
           type={type} 
           value={value}
           onChange={e => onChange(e)}
         />
-      </label>
+      </div>
     </>
   )
 }

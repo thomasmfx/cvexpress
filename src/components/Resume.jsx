@@ -27,8 +27,7 @@ export default function Resume({data}) {
   return (
     <div className='pdf'>
         {/* CONTACT */}
-        {hasEntries(data.contactInformation)
-        ? (
+        {hasEntries(data.contactInformation) && (
           <div className='contact'>
             <p className='name highlight'>{contact.fullName.value}</p>
             <div className='info'>
@@ -41,15 +40,10 @@ export default function Resume({data}) {
               )}
             </div>
           </div>
-        )
-        : ( 
-          null
-        )
-        }
+        )}
 
         {/* EDUCATION */}
-        {hasEntries(educationHistory)
-        ? (
+        {hasEntries(educationHistory) && (
           <div className='section education-history'>
             <p className='section-title highlight'>EDUCATION</p>
             <div className="education-list">
@@ -64,15 +58,10 @@ export default function Resume({data}) {
               )}
             </div>  
           </div>
-        )
-        : (
-          null
-        )
-        }
+        )}
 
         {/* EXPERIENCE */}
-        {hasEntries(experienceList)
-        ? (
+        {hasEntries(experienceList) && (
           <div className='section experience'>
             <p className='section-title highlight'>EXPERIENCE</p>
             <div className="experiences">
@@ -90,15 +79,10 @@ export default function Resume({data}) {
               )}
             </div>
         </div>
-        )
-        : (
-          null
-        )
-        }
+        )}
 
         {/* SKILLS */}
-        {hasEntries(skills)
-        ? (
+        {hasEntries(skills) && (
           <div className='section skills'>
             <p className='section-title highlight'>SKILLS</p>
             <ul className='skills-list'>
@@ -109,15 +93,10 @@ export default function Resume({data}) {
               )}
             </ul>
           </div>
-        )
-        : (
-          null
-        )
-        }
+        )}
 
         {/* LANGUAGES */}
-        {hasEntries(languages)
-        ? (
+        {hasEntries(languages) && (
           <div className='section languages'>
             <p className='section-title highlight'>LANGUAGES</p>
             <ul className='languages-list'>
@@ -128,11 +107,7 @@ export default function Resume({data}) {
               )}
             </ul>
           </div>
-        )
-        : (
-          null
-        )
-        }
+        )}
     </div>
   )
 }
