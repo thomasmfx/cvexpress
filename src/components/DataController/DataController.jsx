@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import getDataComponentsList from "./DataComponentsList";
 import Form from "../Form";
 
@@ -16,6 +16,10 @@ export default function DataController({
   const [isFormOpened, setIsFormOpened] = useState(false);
 
   let isDataContact = dataName === 'contactInformation';
+
+  useEffect(() => {
+    setFormData(defaultEntry); 
+  }, [defaultEntry]);
 
   function openForm() {
     setIsFormOpened(true);
