@@ -64,6 +64,19 @@ const Data = (() => {
     saveToLocalStorage(data, this[data]);
   }
 
+  function clearAllData() {
+    this.contactInformation = [ newContact() ];
+    this.educationHistory = [];
+    this.experienceList = [];
+    this.skillSet = [];
+    this.spokenLanguages = [];
+    // saveToLocalStorage('contactInformation', this.contactInformation);
+    // saveToLocalStorage('educationHistory', this.educationHistory);
+    // saveToLocalStorage('experienceList', this.experienceList);
+    // saveToLocalStorage('skillSet', this.skillSet);
+    // saveToLocalStorage('spokenLanguages', this.spokenLanguages);
+  }
+
   return {
     contactInformation,
     educationHistory,
@@ -75,6 +88,7 @@ const Data = (() => {
     addDataEntry,
     deleteDataEntry,
     editDataEntry,
+    clearAllData
   }
 })();
 
