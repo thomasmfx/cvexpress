@@ -6,6 +6,8 @@ import ContactCard from "./ContactCard";
 export default function ContactForm({contactInfo, onSave}) {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [formData, setFormData] = useState(contactInfo);
+  
+  let hasEntries = false;
  
   function toggleIsFormVisible() {
     setIsFormVisible(!isFormVisible)
@@ -75,9 +77,12 @@ export default function ContactForm({contactInfo, onSave}) {
       </button>
     )}
     </form>
-    <ContactCard
-      data={contactInfo.data}
-    />
+    {Object.entries(contactInfo.data).map(([key, value]) =>
+      value.value !== ''
+      ? hasEntries = true
+      : null
+    )}
+    {hasEntries && <ContactCard data={contactInfo.data} />}
     </>
   )
 }

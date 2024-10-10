@@ -14,8 +14,11 @@ function Container({className, children}) {
   )
 }
 
-function Resume({data}) {
-  const contact = data.contactInformation[0].data;
+export default function Resume({data}) {
+  let contact = data.contactInformation
+  hasEntries(contact)
+  ? contact = contact[0].data
+  : null
   const educationHistory = data.educationHistory;
   const experienceList = data.experienceList;
   const skills = data.skillSet;
@@ -24,23 +27,29 @@ function Resume({data}) {
   return (
     <div className='pdf'>
         {/* CONTACT */}
-        <div className='contact'>
-          <p className='name highlight'>{contact.fullName.value}</p>
-          <div className='info'>
-            {Object.entries(contact).map(([key, value]) =>
-              key !== 'fullName'
-              ? <p className={`contact-text ${key}`} key={key}>
-                  {value.value}
-                </p>
-              : null
-            )}
+        {hasEntries(data.contactInformation)
+        ? (
+          <div className='contact'>
+            <p className='name highlight'>{contact.fullName.value}</p>
+            <div className='info'>
+              {Object.entries(contact).map(([key, value]) =>
+                key !== 'fullName' && value.value !== ''
+                ? <p className={`contact-text ${key}`} key={key}>
+                    {value.value}
+                  </p>
+                : null
+              )}
+            </div>
           </div>
-        </div>
+        )
+        : ( 
+          null
+        )
+        }
 
         {/* EDUCATION */}
-        {educationHistory.length
+        {hasEntries(educationHistory)
         ? (
-          <>
           <div className='section education-history'>
             <p className='section-title highlight'>EDUCATION</p>
             <div className="education-list">
@@ -55,7 +64,6 @@ function Resume({data}) {
               )}
             </div>  
           </div>
-        </>
         )
         : (
           null
@@ -63,7 +71,7 @@ function Resume({data}) {
         }
 
         {/* EXPERIENCE */}
-        {experienceList.length
+        {hasEntries(experienceList)
         ? (
           <div className='section experience'>
             <p className='section-title highlight'>EXPERIENCE</p>
@@ -89,20 +97,18 @@ function Resume({data}) {
         }
 
         {/* SKILLS */}
-        {skills.length
+        {hasEntries(skills)
         ? (
-          <>
           <div className='section skills'>
-          <p className='section-title highlight'>SKILLS</p>
-          <ul className='skills-list'>
-            {skills.map((skill) =>
-              <ListItem className='skill' key={skill.id}>
-                {skill.data.skill.value}
-              </ListItem>
-            )}
-          </ul>
-        </div>
-        </>
+            <p className='section-title highlight'>SKILLS</p>
+            <ul className='skills-list'>
+              {skills.map((skill) =>
+                <ListItem className='skill' key={skill.id}>
+                  {skill.data.skill.value}
+                </ListItem>
+              )}
+            </ul>
+          </div>
         )
         : (
           null
@@ -110,20 +116,18 @@ function Resume({data}) {
         }
 
         {/* LANGUAGES */}
-        {languages.length
+        {hasEntries(languages)
         ? (
-          <>
           <div className='section languages'>
-          <p className='section-title highlight'>LANGUAGES</p>
-          <ul className='languages-list'>
-            {languages.map((language) =>
-              <ListItem className='language' key={language.id}>
-                {language.data.language.value} - {language.data.proficiency.value}
-              </ListItem>
-            )}
-          </ul>
-        </div>
-        </>
+            <p className='section-title highlight'>LANGUAGES</p>
+            <ul className='languages-list'>
+              {languages.map((language) =>
+                <ListItem className='language' key={language.id}>
+                  {language.data.language.value} - {language.data.proficiency.value}
+                </ListItem>
+              )}
+            </ul>
+          </div>
         )
         : (
           null
@@ -133,4 +137,6 @@ function Resume({data}) {
   )
 }
 
-export default Resume
+function hasEntries(array) {
+  return array.length > 0 ? true : false;
+}

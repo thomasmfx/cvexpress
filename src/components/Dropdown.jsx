@@ -9,7 +9,7 @@ export default function Dropdown({title, children}) {
   };
 
   return (
-    <div className="dropdown" >
+    <div className={`dropdown ${displayContent ? 'is-opened' : 'not-opened'}`} >
       <div className="dropdown-header" onClick={handleDisplayContent}>
         <h2 className="dropdown-title">{title}</h2>
         <ChevronUp
@@ -23,11 +23,9 @@ export default function Dropdown({title, children}) {
           }
          />
       </div>
-      {displayContent && 
-        <div className="dropdown-content">
-          {children} 
-        </div>
-      }
+      <div className={`dropdown-content ${displayContent ? 'is-opened' : 'not-opened'}`}>
+        {children} 
+      </div>
   </div>
   )
 }

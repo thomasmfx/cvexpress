@@ -97,11 +97,38 @@ body {
   gap: .5em;
   font-size: .7rem;
 }
-
-.dropdown {
-  display: flex;
-  flex-direction: column;
+.menu-dropdown {
+  position: relative;
 }
+.menu-dropdown-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu-dropdown-content{
+  position: absolute;
+  background-color: #FFFFFF;
+}
+.menu-dropdown-option {
+  display: flex;
+  background: none;
+  border: none;
+}
+
+.actions {
+  display: flex;
+  gap: 2em;
+}
+.action-button {
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  gap: .5em;
+}
+
 .dropdown-header {
   display: flex;
   align-items: center;
@@ -109,19 +136,58 @@ body {
   padding: .8em;
   color: var(--color-one);
   border-bottom: 1px solid var(--color-three);
+
+  .dropdown-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .dropdown-arrow {
+    transition: .3s ease-in-out;
+  }
 }
-.dropdown-title {
-  font-size: 1.2rem;
-  font-weight: 500;
+
+.dropdown {
+  display: grid;
+  user-select: none;
+
+  display: grid;
+  grid-template-rows: 0fr 0fr;
+  transition: grid-template-rows 400ms;
 }
 .dropdown-content {
   display: grid;
   row-gap: 1em;
+
+  overflow: hidden;
+}
+
+.dropdown.is-opened {
+  grid-template-rows: min-content 1fr;
+}
+
+.dropdown-content.is-opened {
+  display: grid;
   border-bottom: 1px solid var(--color-three);
+}
+
+.dropdown-content > form {
   padding: 1.5em;
 }
-.dropdown-arrow {
-  transition: .3s ease-in-out;
+
+.dropdown-content > ul {
+  padding: 1.5em;
+  padding-top: 0;
+}
+/* .dropdown-content:not(.is-opened) {
+} */
+
+@keyframes accordion-down {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 100%;
+  }
 }
 
 .form {
@@ -317,13 +383,14 @@ body {
 .pdf {
   font-family: Poppins;
   display: grid;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   margin: 2em;
   padding: 3em;
   display: grid;
   justify-items: center;
   align-content: start;
   color: black;
+  width: 100%;
   max-width: 900px;
   min-height: 1100px;
 
