@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { newContact } from "./models/helpers/contact";
+// import { newContact } from "./models/helpers/contact";
 import { newEducation } from "./models/helpers/education";
 import { newExperience } from "./models/helpers/experience";
 import { newSkill } from "./models/helpers/skills";

@@ -1,7 +1,7 @@
 export default function validateProperty(data, property) {
   if (typeof data !== 'object' || data == undefined) return '';
-  if (data.hasOwnProperty(property)) {
-    if (data[property].hasOwnProperty('value')) {
+  if (Object.hasOwn(data, property)) {
+    if (Object.hasOwn(data[property], 'value')) {
       return data[property].value
     }
 
