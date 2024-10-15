@@ -27,10 +27,7 @@ export default function DataController({
 
   function closeForm() {
     setIsFormOpened(false);
-    // Just so the user don't notice the form clearing up during the transition (1ms more than the transition duration btw)
-    setTimeout(() => {
-      setFormData(defaultEntry);
-    }, 301)
+    setFormData(defaultEntry);
   }
 
   function handleInputChange(e, key) {
