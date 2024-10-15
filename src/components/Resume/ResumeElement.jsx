@@ -1,3 +1,7 @@
+function hasEntries(array) {
+  return array.length > 0 ? true : false;
+}
+
 function ListItem({className, children}) {
   return (
     <li className={className}>
@@ -15,10 +19,9 @@ function Container({className, children}) {
 }
 
 export default function Resume({data}) {
-  let contact = data.contactInformation
-  hasEntries(contact)
-  ? contact = contact[0].data
-  : null
+  const contact = hasEntries(data.contactInformation) 
+  ? data.contactInformation[0].data
+  : data.contactInformation
   const educationHistory = data.educationHistory;
   const experienceList = data.experienceList;
   const skills = data.skillSet;
@@ -110,8 +113,4 @@ export default function Resume({data}) {
         )}
     </div>
   )
-}
-
-function hasEntries(array) {
-  return array.length > 0 ? true : false;
 }
