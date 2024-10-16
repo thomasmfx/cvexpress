@@ -7,7 +7,7 @@ export default function Input({label, type, value, onChange}) {
           autoComplete="on"
           id={label}
           className="input" 
-          type={type} 
+          type={type === 'url' ? 'text' : type} 
           value={value}
           onChange={e => onChange(e)}
         />

@@ -9,7 +9,6 @@ import Data from "./models/Data";
 import Header from "./components/Header";
 import Dropdown from "./components/Dropdown";
 import DataController from "./components/DataController/DataController";
-import Modal from "./components/Modal";
 import ResumeElement from "./components/Resume/ResumeElement";
 import resumePDF from "./components/Resume/ResumePDF";
 

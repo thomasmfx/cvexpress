@@ -21,21 +21,26 @@ export default function resumePDF(data, download) {
     }
  }
 
-  function contactData() {
-    const contact = hasEntries(data.contactInformation) 
-    ? data.contactInformation[0].data
-    : data.contactInformation
-    let details = '';
-    const contactEntries = Object.entries(contact);
+  const contact = data.contactInformation;
+  
+  function getContactData() {
+    let data = [];
 
-    contactEntries.map(([key, value], index) => {
-      if (key !== 'fullName' && value.value !== '') {
-        details += value.value;
-        if (index < contactEntries.length - 1) details += ' • ';
-      }
-    })
-    
-    return details;
+    if (hasEntries(contact)) {
+      const contactEntries = Object.entries(contact[0].data)
+      
+      contactEntries.map(([key, value], index) => {
+        if (key !== 'fullName' && value.value !== '') {
+          value.inputType === 'url'
+            ? data.push({ text: value.value, link: `${value.value}`, decoration: 'underline' })
+            : data.push({ text: value.value });
+        };
+
+        if (index > 0 && index < contactEntries.length - 1) data.push({text: ' • '});
+      })
+    }
+
+    return data;
   }
   const contactSection = [
     {
@@ -46,10 +51,12 @@ export default function resumePDF(data, download) {
       margin: [0, 0, 0, 5],
     },
     {
-      text: contactData(),
+      text: [
+        ...getContactData()
+      ],
       alignment: 'center',
       margin: [50, 0, 50, 20],
-    }
+    },
   ]
 
   const educationData = data.educationHistory.map((entry) => {
