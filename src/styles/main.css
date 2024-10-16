@@ -365,7 +365,7 @@ body {
   width: 100%;
   max-width: 800px;
   height: auto;
-  aspect-ratio: 1 / 1.4;
+  aspect-ratio: 1 / 1.5;
   border: 1px solid #bbbebf7c;
 
   .highlight {
@@ -378,7 +378,7 @@ body {
   .section {
     display: flex;
     flex-direction: column;
-    padding: 1em 0 1em 0;
+    padding: 1em 0 .5em 0;
     width: 100%;
   }
 
@@ -489,6 +489,7 @@ body {
       
       li.skill:before {
         content: '• ';
+        font-size: 1.4em;
       }
     } 
   }
@@ -509,6 +510,7 @@ body {
       
       li.language:before {
         content: '• ';
+        font-size: 1.4em;
       }
     } 
   }

@@ -8,8 +8,10 @@ import { newLanguage } from "./models/helpers/languages";
 import Data from "./models/Data";
 import Header from "./components/Header";
 import Dropdown from "./components/Dropdown";
-import Resume from "./components/Resume";
 import DataController from "./components/DataController/DataController";
+import Modal from "./components/Modal";
+import ResumeElement from "./components/Resume/ResumeElement";
+import resumePDF from "./components/Resume/ResumePDF";
 
 function App() {
   const [resumeData, setResumeData] = useState(Data);
@@ -38,10 +40,16 @@ function App() {
     refreshData();
   }
 
+  function displayPdf() {
+    resumePDF(resumeData, false)
+  }
+
   return (
     <>
     <Header
       onClear={clearAllData}
+      onPreview={() => displayPdf(resumeData, false)}
+      onDownload={() => resumePDF(resumeData, true)}
     />
     <main className="main">
       <section className="section-form">
@@ -103,7 +111,7 @@ function App() {
         </Dropdown>
       </section>
       <section className="section-resume">
-        <Resume
+        <ResumeElement
           data={resumeData}
         />
       </section>

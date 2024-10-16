@@ -1,6 +1,4 @@
-function hasEntries(array) {
-  return array.length > 0 ? true : false;
-}
+import { hasEntries } from "../../helpers/helpers"
 
 function ListItem({className, children}) {
   return (

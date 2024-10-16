@@ -4,16 +4,9 @@ import { PoppinsRegular } from './Fonts/Poppins-Regular'
 import { PoppinsSemiBold } from './Fonts/Poppins-SemiBold'
 import { PoppinsLight } from './Fonts/Poppins-Light'
 import { PoppinsMedium } from './Fonts/Poppins-Medium'
+import { hasEntries, getDefaultIfEntries } from "../../helpers/helpers"
 
-function hasEntries(array) {
-  return array.length > 0 ? true : false;
-}
-
-function getDefaultIfEntries(array, defaultData) {
-  return hasEntries(array) ? defaultData : null;
-}
-
-export default function resumePDF(data) {
+export default function resumePDF(data, download) {
   pdfMake.vfs = pdfFonts.pdfMake.vfs
   window.pdfMake.vfs["Poppins-Regular.ttf"] = PoppinsRegular;
   window.pdfMake.vfs["Poppins-SemiBold.ttf"] = PoppinsSemiBold;
@@ -228,6 +221,8 @@ export default function resumePDF(data) {
   const original = data.contactInformation[0].data.fullName.value
   const formatedName = formatName(original);
   
-  // pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`);
-  pdfMake.createPdf(docDefinition).open();
+  if (download) {
+    return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
+  };
+  return pdfMake.createPdf(docDefinition).open();
 }

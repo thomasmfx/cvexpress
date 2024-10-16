@@ -1,6 +1,6 @@
 import { Download, Eraser, Eye } from 'lucide-react';
 
-export default function Header({onClear}) {
+export default function Header({onClear, onPreview, onDownload}) {
   const styles = {
     size: '28px'
   }
@@ -16,10 +16,10 @@ export default function Header({onClear}) {
           <Eraser size={styles.size}/>
           <span>Clear</span>
         </button>
-        <button className='nav-button view-pdf'>
+        <button className='nav-button view-pdf' onClick={() => onPreview()}>
           <Eye size={styles.size}/>
         </button>
-        <button className='nav-button'>
+        <button className='nav-button' onClick={() => onDownload()}>
           <Download size={styles.size}/>
           <span>Download</span>
         </button>
