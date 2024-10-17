@@ -85,9 +85,8 @@ body {
   color: var(--color-two);
   background-color: var(--color-one);
 }
-.header .logo {
+.logo {
   display: flex;
-  gap: .5em;
   font-size: .7rem;
 }
 
