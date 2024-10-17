@@ -1,5 +1,5 @@
 import pdfMake from 'pdfmake/build/pdfmake'
-import pdfFonts from 'pdfmake/build/vfs_fonts'
+import pdfFonts from './Fonts/fonts'
 import { PoppinsRegular } from './Fonts/Poppins-Regular'
 import { PoppinsSemiBold } from './Fonts/Poppins-SemiBold'
 import { PoppinsLight } from './Fonts/Poppins-Light'
@@ -7,7 +7,7 @@ import { PoppinsMedium } from './Fonts/Poppins-Medium'
 import { hasEntries, getDefaultIfEntries } from "../../helpers/helpers"
 
 export default function resumePDF(data, download) {
-  pdfMake.vfs = pdfFonts.pdfMake.vfs
+  pdfMake.vfs = pdfFonts;
   window.pdfMake.vfs["Poppins-Regular.ttf"] = PoppinsRegular;
   window.pdfMake.vfs["Poppins-SemiBold.ttf"] = PoppinsSemiBold;
   window.pdfMake.vfs["Poppins-Light.ttf"] = PoppinsLight;

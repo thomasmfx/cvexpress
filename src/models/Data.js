@@ -1,42 +1,49 @@
 import { newContact } from "./helpers/contact"
-import { newEducation } from "./helpers/education"
-import { newExperience } from "./helpers/experience"
-import { newSkill } from "./helpers/skills"
-import { newLanguage } from "./helpers/languages"
+// import { newEducation } from "./helpers/education"
+// import { newExperience } from "./helpers/experience"
+// import { newSkill } from "./helpers/skills"
+// import { newLanguage } from "./helpers/languages"
 
 const Data = (() => {
-  let contactInformation = getStoredOrDefault('contactInformation', newContact({
-    fullName: 'Thomas Moisés Fernandes',
-    address: 'São Paulo, SP',
-    phone: '(11) 94573-5684',
-    email: 'thomasmoisesf@gmail.com',
-    linkedIn: 'linkedin.com/in/thomas-moises-fernandes',
-    github: 'github.com/thomasmfx'
-  }))
+  let contactInformation = getStoredOrDefault('contactInformation', newContact());
+  let educationHistory = getStoredOrDefault('educationHistory');
+  let experienceList = getStoredOrDefault('experienceList');
+  let skillSet = getStoredOrDefault('skillSet');
+  let spokenLanguages = getStoredOrDefault('spokenLanguages');
   
-  let educationHistory = getStoredOrDefault('educationHistory', newEducation({
-    school: 'Fatec Mogi das Cruzes',
-    course: 'Análise e Desenvolvimento de Sistemas',
-    startDate: '08/2024',
-    endDate: '07/2027',
-  }))
+
+  // let contactInformation = getStoredOrDefault('contactInformation', newContact({
+  //   fullName: 'Thomas Moisés Fernandes',
+  //   address: 'São Paulo, SP',
+  //   phone: '(11) 94573-5684',
+  //   email: 'thomasmoisesf@gmail.com',
+  //   linkedIn: 'linkedin.com/in/thomas-moises-fernandes',
+  //   github: 'github.com/thomasmfx'
+  // }))
   
-  let experienceList = getStoredOrDefault('experienceList', newExperience({
-    jobPosition: 'Software Engineer',
-    company: 'Tech Solutions',
-    location: 'São Paulo, Brazil',
-    startDate: '10/2024',
-    endDate: 'Atual',
-  }))
+  // let educationHistory = getStoredOrDefault('educationHistory', newEducation({
+  //   school: 'Fatec Mogi das Cruzes',
+  //   course: 'Análise e Desenvolvimento de Sistemas',
+  //   startDate: '08/2024',
+  //   endDate: '07/2027',
+  // }))
   
-  let skillSet = getStoredOrDefault('skillSet', newSkill({ 
-    skill: 'React'
-  }))
+  // let experienceList = getStoredOrDefault('experienceList', newExperience({
+  //   jobPosition: 'Software Engineer',
+  //   company: 'Tech Solutions',
+  //   location: 'São Paulo, Brazil',
+  //   startDate: '10/2024',
+  //   endDate: 'Atual',
+  // }))
   
-  let spokenLanguages = getStoredOrDefault('spokenLanguages', newLanguage({ 
-    language: 'English', 
-    proficiency: 'Fluent' 
-  }))
+  // let skillSet = getStoredOrDefault('skillSet', newSkill({ 
+  //   skill: 'React'
+  // }))
+  
+  // let spokenLanguages = getStoredOrDefault('spokenLanguages', newLanguage({ 
+  //   language: 'English', 
+  //   proficiency: 'Fluent' 
+  // }))
 
   function getDataList(data) {
     return this[data];
@@ -103,7 +110,8 @@ function retrieveFromLocalStorage(name) {
 function getStoredOrDefault(storedName, replace) {
   let stored = retrieveFromLocalStorage(storedName)
   if (stored != undefined) return stored;
-  return [ replace ];
+  if (replace != null) return [ replace ];
+  return [];
 }
 
 export default Data
