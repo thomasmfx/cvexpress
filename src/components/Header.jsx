@@ -1,4 +1,4 @@
-import { Download, Eraser, Eye } from 'lucide-react';
+import { Download, Eraser, Eye, ChartNoAxesGantt } from 'lucide-react';
 
 export default function Header({onClear, onPreview, onDownload}) {
   const styles = {
@@ -8,7 +8,10 @@ export default function Header({onClear, onPreview, onDownload}) {
   return (
     <header className='header'>
       <div className='logo'>
-        <img src="../../public/logo-white.svg" alt="Logo" />
+        <ChartNoAxesGantt 
+          size={'32px'}
+          strokeWidth={3}
+        />
         <h1>CVExpress</h1>
       </div>
       <nav className="nav">
