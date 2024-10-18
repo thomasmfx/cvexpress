@@ -13,6 +13,7 @@ export default function ContactList({data}) {
   {Object.entries(data[0].data).map(([key, value]) => {
     if (value.value !== '') hasEntries = true
   })}
+
   
   return (
     <ul className="cards-wrapper">

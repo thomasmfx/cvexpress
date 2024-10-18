@@ -4,6 +4,7 @@ import { newEducation } from "./models/helpers/education";
 import { newExperience } from "./models/helpers/experience";
 import { newSkill } from "./models/helpers/skills";
 import { newLanguage } from "./models/helpers/languages";
+import { getFieldTranslation } from "./models/translations";
 
 import Data from "./models/Data";
 import Header from "./components/Header";
@@ -14,6 +15,7 @@ import resumePDF from "./components/Resume/ResumePDF";
 
 function App() {
   const [resumeData, setResumeData] = useState(Data);
+  const language = resumeData.language;
 
   function refreshData() {
     setResumeData({...Data});
@@ -34,14 +36,21 @@ function App() {
     refreshData();
   }
 
+  function toggleLanguage() {
+    Data.toggleLanguage();
+    refreshData();
+  }
+
   return (
     <>
     <Header
+      language={language}
+      onToggleLanguage={toggleLanguage}
       onDownload={() => resumePDF(resumeData, true)}
     />
     <main className="main">
       <section className="section-form">
-        <Dropdown title={'Contact Information'}>
+        <Dropdown title={getFieldTranslation('contact', language)}>
           {/* 
           The behavior of modifying the contact is quite different. Since there's only one entry, and it's impossible to
           create a new contact entry or delete the existing one (actually, it's possible, but i built it this way), the user is gonna always edit the current contact information instead.
@@ -49,50 +58,55 @@ function App() {
           So in this case, the defaultEntry is the existing entry, and the save button is gonna edit it instead of creating a new one
           */}
           <DataController
-            data={resumeData.contactInformation}
-            dataName={'contactInformation'}
-            defaultEntry={resumeData.contactInformation[0]}
+            language={language}
+            data={resumeData.contact}
+            dataName={'contact'}
+            defaultEntry={resumeData.contact[0]}
             onSave={editEntry}
           />
         </Dropdown>
-        <Dropdown title={'Education'}>
+        <Dropdown title={getFieldTranslation('education', language)}>
           <DataController
-            data={resumeData.educationHistory}
-            dataName={'educationHistory'}
+            language={language}
+            data={resumeData.education}
+            dataName={'education'}
             defaultEntry={newEducation()}
-            buttonText={'education'}
+            buttonText={language === 'en' ? 'course' : 'curso'}
             onSave={addEntry}
             onEdit={editEntry}
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={'Experience'}>
+        <Dropdown title={getFieldTranslation('experience', language)}>
           <DataController
-            data={resumeData.experienceList}
-            dataName={'experienceList'}
+            language={language}
+            data={resumeData.experience}
+            dataName={'experience'}
             defaultEntry={newExperience()}
-            buttonText={'experience'}
+            buttonText={language === 'en' ? 'experience' : 'experiência'}
             onSave={addEntry}
             onEdit={editEntry}
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={'Skills'}>
+        <Dropdown title={getFieldTranslation('skills', language)}>
           <DataController
-            data={resumeData.skillSet}
-            dataName={'skillSet'}
+            language={language}
+            data={resumeData.skills}
+            dataName={'skills'}
             defaultEntry={newSkill()}
-            buttonText={'skill'}
+            buttonText={language === 'en' ? 'skill' : 'habilidade'}
             onSave={addEntry}
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={'Languages'}>
+        <Dropdown title={getFieldTranslation('languages', language)}>
           <DataController
-            data={resumeData.spokenLanguages}
-            dataName={'spokenLanguages'}
+            language={language}
+            data={resumeData.languages}
+            dataName={'languages'}
             defaultEntry={newLanguage()}
-            buttonText={'language'}
+            buttonText={language === 'en' ? 'language' : 'idioma'}
             onSave={addEntry}
             onDelete={deleteEntry}
           />

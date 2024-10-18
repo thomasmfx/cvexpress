@@ -1,4 +1,6 @@
 import { hasEntries } from "../../helpers/helpers"
+import { getFieldTranslation } from '../../models/translations'
+
 
 function ListItem({className, children}) {
   return (
@@ -17,18 +19,18 @@ function Container({className, children}) {
 }
 
 export default function Resume({data, isMobile}) {
-  const contact = hasEntries(data.contactInformation) 
-  ? data.contactInformation[0].data
-  : data.contactInformation
-  const educationHistory = data.educationHistory;
-  const experienceList = data.experienceList;
-  const skills = data.skillSet;
-  const languages = data.spokenLanguages;
+  const contact = hasEntries(data.contact) 
+  ? data.contact[0].data
+  : data.contact
+  const education = data.education;
+  const experience = data.experience;
+  const skills = data.skills;
+  const languages = data.languages;
 
   return (
     <div className={`resume ${isMobile ? 'resume-mobile' : ''}`}>
         {/* CONTACT */}
-        {hasEntries(data.contactInformation) && (
+        {hasEntries(data.contact) && (
           <div className='section contact'>
             <p className='section-title contact-name'>{contact.fullName.value}</p>
             <div className='contact-info'>
@@ -61,11 +63,11 @@ export default function Resume({data, isMobile}) {
         )}
 
         {/* EDUCATION */}
-        {hasEntries(educationHistory) && (
+        {hasEntries(education) && (
           <div className='section section-layout-one'>
-            <p className='section-title'>EDUCATION</p>
+            <p className='section-title'>{getFieldTranslation('education', data.language).toUpperCase()}</p>
             <div className="entries-list">
-              {educationHistory.map((education) =>
+              {education.map((education) =>
                 <Container className='entry' key={education.id}>
                   <p className="entry-value">{education.data.school.value}</p>
                   <p className="entry-value"></p>
@@ -80,11 +82,11 @@ export default function Resume({data, isMobile}) {
         )}
 
         {/* EXPERIENCE */}
-        {hasEntries(experienceList) && (
+        {hasEntries(experience) && (
           <div className='section section-layout-one'>
-            <p className='section-title'>EXPERIENCE</p>
+            <p className='section-title'>{getFieldTranslation('experience', data.language).toUpperCase()}</p>
             <div className="entries-list">
-              {experienceList.map((experience) =>
+              {experience.map((experience) =>
                 <Container className='entry' key={experience.id}>
                     <p className="entry-value">{experience.data.jobPosition.value}</p>
                     <div className="entry-value">
@@ -103,7 +105,7 @@ export default function Resume({data, isMobile}) {
         {/* SKILLS */}
         {hasEntries(skills) && (
           <div className='section skills section-list-layout'>
-            <p className='section-title'>SKILLS</p>
+            <p className='section-title'>{getFieldTranslation('skills', data.language).toUpperCase()}</p>
             <ul className='entries-list'>
               {skills.map((skill) =>
                 <ListItem className='list-item' key={skill.id}>
@@ -117,7 +119,7 @@ export default function Resume({data, isMobile}) {
         {/* LANGUAGES */}
         {hasEntries(languages) && (
           <div className='section section-list-layout'>
-            <p className='section-title'>LANGUAGES</p>
+            <p className='section-title'>{getFieldTranslation('languages', data.language).toUpperCase()}</p>
             <ul className='entries-list'>
               {languages.map((language) =>
                 <ListItem className='list-item' key={language.id}>

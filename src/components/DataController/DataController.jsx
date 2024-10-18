@@ -5,6 +5,7 @@ import Form from "../Form";
 export default function DataController({
   data, 
   dataName,
+  language,
   defaultEntry,
   buttonText,
   onSave, 
@@ -15,7 +16,7 @@ export default function DataController({
   const [isEditingData, setIsEditingData] = useState(false);
   const [isFormOpened, setIsFormOpened] = useState(false);
 
-  let isDataContact = dataName === 'contactInformation';
+  let isDataContact = dataName === 'contact';
 
   useEffect(() => {
     setFormData(defaultEntry); 
@@ -50,7 +51,7 @@ export default function DataController({
     closeForm();
     setIsEditingData(false);
 
-    // If the data is contactInformation, onSave is passed as 'editEntry' in DataController, explanation also there
+    // If the data is contact, onSave is passed as 'editEntry' in DataController, explanation also there
     if (isDataContact) {
       onSave(dataName, formData.id, formData);
       return;
@@ -72,6 +73,8 @@ export default function DataController({
     <>
       <Form 
         data={formData}
+        dataName={dataName}
+        language={language}
         isOpened={isFormOpened}
         openFormButtonText={buttonText}
         onClose={closeForm}

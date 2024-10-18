@@ -1,14 +1,15 @@
 import { Plus, PencilLine } from "lucide-react"
 import Input from "./Input"
+import { getTranslation } from '../models/translations';
 
-export default function Form({data, isOpened, openFormButtonText, onClose, onOpen, onChange, onSubmit}) {
+export default function Form({data, dataName, language, isOpened, openFormButtonText, onClose, onOpen, onChange, onSubmit}) {
   return (
     <div className={`form-container ${isOpened ? 'is-opened' : 'not-opened'}`}>
       <form className="form" onSubmit={(e) => onSubmit(e, data)}>
         {Object.entries(data.data).map(([key, data]) => (
           <Input
             key={key}
-            label={data.title}
+            label={getTranslation(dataName, key, language)}
             type={data.inputType}
             value={data.value}
             onChange={(e) => onChange(e, key)}
@@ -38,12 +39,12 @@ export default function Form({data, isOpened, openFormButtonText, onClose, onOpe
         {Object.hasOwn(data.data, 'fullName') ? (
           <>
             <PencilLine />
-            Edit info
+            {language === 'en' ? 'Edit info' : 'Editar informações'}
           </>
         ) : (
           <>
             <Plus />
-            Add {openFormButtonText}
+            {language === 'en' ? 'Add' : 'Adicionar'} {openFormButtonText}
           </>
         )}
       </button>

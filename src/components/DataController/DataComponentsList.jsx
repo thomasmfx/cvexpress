@@ -6,13 +6,13 @@ import LanguagesList from "../DataLists/LanguagesList"
 
 export default function getDataComponentsList(data, dataName, onEdit, onDelete) {
   switch (dataName) {
-    case 'contactInformation':
+    case 'contact':
       return  (
         <ContactList
           data={data} 
         />
       )
-    case 'educationHistory':
+    case 'education':
       return  (
         <EducationList
           data={data} 
@@ -20,7 +20,7 @@ export default function getDataComponentsList(data, dataName, onEdit, onDelete) 
           onDelete={onDelete}
         />
       )
-    case 'experienceList':
+    case 'experience':
       return  (
         <ExperienceList
           data={data}
@@ -28,14 +28,14 @@ export default function getDataComponentsList(data, dataName, onEdit, onDelete) 
           onDelete={onDelete}
         />
       )
-    case 'skillSet':
+    case 'skills':
       return  (
         <SkillsList
           data={data}
           onDelete={onDelete}
         />
       )
-    case 'spokenLanguages':
+    case 'languages':
       return  (
         <LanguagesList
           data={data}

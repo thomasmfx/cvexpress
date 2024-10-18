@@ -477,7 +477,7 @@ body {
   }
 }
 
-@media (max-width: 1269px) {
+@media (max-width: 1440px) {
   .main {
     display: grid;
     grid-template-rows: repeat(2, min-content);

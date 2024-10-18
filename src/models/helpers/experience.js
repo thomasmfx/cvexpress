@@ -1,31 +1,32 @@
 import validateProperty from './validation';
+import {getTranslation} from '../translations';
 
-export function newExperience(data) {
+export function newExperience(data, lang = 'en') {
   return {
     id: crypto.randomUUID(),
     data: {
       jobPosition: {
-        title: 'Job position',
+        title: getTranslation('experience', 'jobPosition', lang),
         inputType: 'text',
         value: validateProperty(data, 'jobPosition')
       },
       company: {
-        title: 'Company',
+        title: getTranslation('experience', 'company', lang),
         inputType: 'text',
         value: validateProperty(data, 'company')
       },
       location: {
-        title: 'Location',
+        title: getTranslation('experience', 'location', lang),
         inputType: 'text',
         value: validateProperty(data, 'location')
       },
       startDate: {
-        title: 'Start date',
+        title: getTranslation('experience', 'startDate', lang),
         inputType: 'text',
         value: validateProperty(data, 'startDate')
       },
       endDate: {
-        title: 'End date',
+        title: getTranslation('experience', 'endDate', lang),
         inputType: 'text',
         value: validateProperty(data, 'endDate')
       }

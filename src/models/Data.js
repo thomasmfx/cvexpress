@@ -1,49 +1,53 @@
 import { newContact } from "./helpers/contact"
-// import { newEducation } from "./helpers/education"
-// import { newExperience } from "./helpers/experience"
-// import { newSkill } from "./helpers/skills"
-// import { newLanguage } from "./helpers/languages"
+import { newEducation } from "./helpers/education"
+import { newExperience } from "./helpers/experience"
+import { newSkill } from "./helpers/skills"
+import { newLanguage } from "./helpers/languages"
 
 const Data = (() => {
-  let contactInformation = getStoredOrDefault('contactInformation', newContact());
-  let educationHistory = getStoredOrDefault('educationHistory');
-  let experienceList = getStoredOrDefault('experienceList');
-  let skillSet = getStoredOrDefault('skillSet');
-  let spokenLanguages = getStoredOrDefault('spokenLanguages');
+  let storedLang = retrieveFromLocalStorage('language');
+  let language = storedLang ? storedLang : 'en';
+
+  let contact = getStoredOrDefault('contact', newContact());
+  let education = getStoredOrDefault('education');
+  let experience = getStoredOrDefault('experience');
+  let skills = getStoredOrDefault('skills');
+  let languages = getStoredOrDefault('languages');
   
 
-  // let contactInformation = getStoredOrDefault('contactInformation', newContact({
+  // Might want to use it to do some tests
+  // let contact = getStoredOrDefault('contact', newContact({
   //   fullName: 'Thomas Moisés Fernandes',
   //   address: 'São Paulo, SP',
   //   phone: '(11) 94573-5684',
   //   email: 'thomasmoisesf@gmail.com',
   //   linkedIn: 'linkedin.com/in/thomas-moises-fernandes',
   //   github: 'github.com/thomasmfx'
-  // }))
+  // }, language))
   
-  // let educationHistory = getStoredOrDefault('educationHistory', newEducation({
+  // let education = getStoredOrDefault('education', newEducation({
   //   school: 'Fatec Mogi das Cruzes',
   //   course: 'Análise e Desenvolvimento de Sistemas',
   //   startDate: '08/2024',
   //   endDate: '07/2027',
-  // }))
+  // }, language))
   
-  // let experienceList = getStoredOrDefault('experienceList', newExperience({
+  // let experience = getStoredOrDefault('experience', newExperience({
   //   jobPosition: 'Software Engineer',
   //   company: 'Tech Solutions',
   //   location: 'São Paulo, Brazil',
   //   startDate: '10/2024',
   //   endDate: 'Atual',
-  // }))
+  // }, language))
   
-  // let skillSet = getStoredOrDefault('skillSet', newSkill({ 
+  // let skills = getStoredOrDefault('skills', newSkill({ 
   //   skill: 'React'
-  // }))
+  // }, language))
   
-  // let spokenLanguages = getStoredOrDefault('spokenLanguages', newLanguage({ 
+  // let languages = getStoredOrDefault('languages', newLanguage({ 
   //   language: 'English', 
   //   proficiency: 'Fluent' 
-  // }))
+  // }, language))
 
   function getDataList(data) {
     return this[data];
@@ -71,31 +75,26 @@ const Data = (() => {
     saveToLocalStorage(data, this[data]);
   }
 
-  function clearAllData() {
-    this.contactInformation = [ newContact() ];
-    this.educationHistory = [];
-    this.experienceList = [];
-    this.skillSet = [];
-    this.spokenLanguages = [];
-    // saveToLocalStorage('contactInformation', this.contactInformation);
-    // saveToLocalStorage('educationHistory', this.educationHistory);
-    // saveToLocalStorage('experienceList', this.experienceList);
-    // saveToLocalStorage('skillSet', this.skillSet);
-    // saveToLocalStorage('spokenLanguages', this.spokenLanguages);
+  function toggleLanguage() {
+    this.language === 'en'
+      ? this.language = 'pt'
+      : this.language = 'en';
+    saveToLocalStorage('language', this.language)
   }
 
   return {
-    contactInformation,
-    educationHistory,
-    experienceList,
-    skillSet,
-    spokenLanguages,
+    language,
+    contact,
+    education,
+    experience,
+    skills,
+    languages,
+    toggleLanguage,
     getDataList,
     getDataEntryById,
     addDataEntry,
     deleteDataEntry,
     editDataEntry,
-    clearAllData
   }
 })();
 
