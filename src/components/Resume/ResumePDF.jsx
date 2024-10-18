@@ -6,7 +6,7 @@ import { PoppinsLight } from './Fonts/Poppins-Light'
 import { PoppinsMedium } from './Fonts/Poppins-Medium'
 import { hasEntries, getDefaultIfEntries } from "../../helpers/helpers"
 
-export default function resumePDF(data, download) {
+export default function resumePDF(data) {
   pdfMake.vfs = pdfFonts;
   window.pdfMake.vfs["Poppins-Regular.ttf"] = PoppinsRegular;
   window.pdfMake.vfs["Poppins-SemiBold.ttf"] = PoppinsSemiBold;
@@ -34,9 +34,8 @@ export default function resumePDF(data, download) {
           value.inputType === 'url'
             ? data.push({ text: value.value, link: `${value.value}`, decoration: 'underline' })
             : data.push({ text: value.value });
+            if (index > 0 && index < contactEntries.length - 1) data.push({text: ' • '});
         };
-
-        if (index > 0 && index < contactEntries.length - 1) data.push({text: ' • '});
       })
     }
 
@@ -73,6 +72,7 @@ export default function resumePDF(data, download) {
             {text: ' '},
             {text: `${entry.data.startDate.value} - ${entry.data.endDate.value}`}
           ],
+          margin: [0, 0, 0, 6],
           alignment: 'right'
         },
       ]
@@ -227,9 +227,7 @@ export default function resumePDF(data, download) {
   
   const original = data.contactInformation[0].data.fullName.value
   const formatedName = formatName(original);
-  
-  if (download) {
-    return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
-  };
+
+  // return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
   return pdfMake.createPdf(docDefinition).open();
 }

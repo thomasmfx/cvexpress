@@ -34,20 +34,9 @@ function App() {
     refreshData();
   }
 
-  function clearAllData() {
-    Data.clearAllData();
-    refreshData();
-  }
-
-  function displayPdf() {
-    resumePDF(resumeData, false)
-  }
-
   return (
     <>
     <Header
-      onClear={clearAllData}
-      onPreview={() => displayPdf(resumeData, false)}
       onDownload={() => resumePDF(resumeData, true)}
     />
     <main className="main">
@@ -66,23 +55,23 @@ function App() {
             onSave={editEntry}
           />
         </Dropdown>
-        <Dropdown title={'Experience'}>
-          <DataController
-            data={resumeData.experienceList}
-            dataName={'experienceList'}
-            defaultEntry={newExperience()}
-            buttonText={'experience'}
-            onSave={addEntry}
-            onEdit={editEntry}
-            onDelete={deleteEntry}
-          />
-        </Dropdown>
         <Dropdown title={'Education'}>
           <DataController
             data={resumeData.educationHistory}
             dataName={'educationHistory'}
             defaultEntry={newEducation()}
             buttonText={'education'}
+            onSave={addEntry}
+            onEdit={editEntry}
+            onDelete={deleteEntry}
+          />
+        </Dropdown>
+        <Dropdown title={'Experience'}>
+          <DataController
+            data={resumeData.experienceList}
+            dataName={'experienceList'}
+            defaultEntry={newExperience()}
+            buttonText={'experience'}
             onSave={addEntry}
             onEdit={editEntry}
             onDelete={deleteEntry}

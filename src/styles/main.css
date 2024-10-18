@@ -107,9 +107,6 @@ body {
   gap: .5em;
   padding: .2em;
 }
-.nav-button.view-pdf {
-  display: none;
-}
 
 /* || Dropdown */
 .dropdown-header {
@@ -349,31 +346,36 @@ body {
   }
 }
 
+/* || Modal */
+.modal-container {
+  position: absolute;
+  background-color: #21252996;
+  width: 100%;
 
+}
+.modal-content {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content > .resume {
+  display: block;
+}
 
 /* || PDF */
-.pdf {
+.resume {
   font-family: Poppins;
-  display: grid;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
   margin: 2em;
   padding: 3em;
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  color: black;
   width: 100%;
   max-width: 800px;
-  height: auto;
   aspect-ratio: 1 / 1.5;
   border: 1px solid #bbbebf7c;
-
-  .highlight {
-    color: #007e72;
-    background: none;
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
 
   .section {
     display: flex;
@@ -383,132 +385,78 @@ body {
   }
 
   .section-title {
-    justify-self: start;
-  }
-
-  .name {
-    font-size: 2rem;
+    color: #007e72;
+    font-weight: 600;
+    font-size: 1.2rem;
   }
 
   .contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 1.8em;
     align-items: center;
-    padding-bottom: 2em;
     gap: .5em;
 
-    .info {
+    .contact-name {
+      font-size: 2rem;
+    }
+
+    .contact-info {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      font-size: 1rem;
       white-space: pre-wrap;
-   
 
-      .contact-text:not(:last-child):after {
-        content: ' • ';
+      .contact-link {
+        color: black;
       }
     }
   }
 
-  .education-history {
-    
-    .education-list {
+  .section-layout-one {
+    .entries-list {
       display: flex;
       flex-direction: column;
       gap: 1em;
-
-      .education {
+      
+      .entry {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
         grid-template-rows: min-content;
 
-        .school {
+        .entry-value:nth-child(1) {
           font-weight: 600;
         }
-
-        .course {
-          grid-row: 2 / -1;
-          grid-column: 1 / 2;
-        }
-
-        .date-info {
+        .entry-value:nth-child(2) {
           justify-self: end;
-          grid-row: 2 / -1;
+          display: flex;
+        }
+        .entry-value:nth-child(3) {
+          justify-self: start;
+        }
+        .entry-value:nth-child(4) {
+          justify-self: end;
         }
       }
     }
   }
 
-  .experience {
-
-    .experiences {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-
-      .experience {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, min-content);
-      }
-    }
-
-    .job-position {
-      font-weight: 600;
-    }
-
-    .date-info {
-      justify-self: end;
-      display: flex;
-    }
-
-    .location {
-      justify-self: end;
-    }
-
-    .description {
-      margin-top: .5em;
-    }
-  }
-
-  .section.skills {
+  .section-list-layout {
     display: grid;
     grid-template-rows: auto;
 
-    ul.skills-list {
+    ul.entries-list {
       columns: 2;
       -webkit-columns: 2;
       -moz-columns: 2;
       
-      li.skill {
+      li.list-item {
+        display: flex;
+        align-items: center;
+        gap: .6em;
         list-style: none;
         padding: 0;
       }
-      
-      li.skill:before {
-        content: '• ';
-        font-size: 1.4em;
-      }
-    } 
-  }
-
-  .section.languages {
-    display: grid;
-    grid-template-rows: auto;
-
-    ul.languages-list {
-      columns: 2;
-      -webkit-columns: 2;
-      -moz-columns: 2;
-      
-      li.language {
-        list-style: none;
-        padding: 0;
-      }
-      
-      li.language:before {
+      li.list-item:before {
         content: '• ';
         font-size: 1.4em;
       }
@@ -517,7 +465,7 @@ body {
 }
 
 @media (max-width: 767px) {
-  .pdf {
+  .resume {
     display: none;
   }
 
@@ -527,12 +475,9 @@ body {
   .nav-button > span {
     display: none;
   }
-  .nav-button.view-pdf {
-    display: block;
-  }
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1269px) {
   .main {
     display: grid;
     grid-template-rows: repeat(2, min-content);
