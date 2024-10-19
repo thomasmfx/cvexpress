@@ -27,8 +27,9 @@ export default function Resume({data, isMobile}) {
   const skills = data.skills;
   const languages = data.languages;
 
-  let entriesCount = - 1; // Gotta desconsider the name
-  Object.entries(contact).map(([key, value], index) => 
+  let entriesCount = -1; // Gotta desconsider the name
+  let bulletPointsCount = 1;
+  Object.entries(contact).map(([key, value]) => 
     value.value != '' ? entriesCount++ : null
   )
 
@@ -39,24 +40,13 @@ export default function Resume({data, isMobile}) {
           <div className='section contact'>
             <p className='section-title contact-name'>{contact.fullName.value}</p>
             <div className='contact-info'>
-              {Object.entries(contact).map(([key, value], index) => {
+              {Object.entries(contact).map(([key, value]) => {
                 if (key !== 'fullName' && value.value !== '') {
-                  if (value.inputType === 'url') {
-                    return (
-                      <div className="entry-wrapper" key={key}>
-                        <a className={'contact-link'} href={value.value}>
-                          {value.value}
-                        </a>
-                        {index < entriesCount && <span> • </span>}
-                      </div>
-                    );
-                  };
-
                   return (
                     <div className="entry-wrapper" key={key}>
                       <p>
                         {value.value}
-                        {index < entriesCount && <span> • </span>}
+                        {bulletPointsCount++ < entriesCount && <span> • </span>}
                       </p>
                     </div>
                   )

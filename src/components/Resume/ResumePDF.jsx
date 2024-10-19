@@ -227,9 +227,13 @@ export default function resumePDF(data) {
       .replace(/\s+/g, '-');           
   }
   
-  const original = data.contact[0].data.fullName.value
-  const formatedName = formatName(original);
+  const fullName = data.contact[0].data.fullName.value
+  const fileName = fullName !== ''
+    ? formatName(fullName)
+    : data.language === 'pt'
+        ? 'Curriculo'
+        : 'Resume';
 
-  return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
+  return pdfMake.createPdf(docDefinition).download(`${fileName}.pdf`)
   // return pdfMake.createPdf(docDefinition).open();
 }
