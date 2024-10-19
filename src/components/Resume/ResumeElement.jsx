@@ -27,6 +27,11 @@ export default function Resume({data, isMobile}) {
   const skills = data.skills;
   const languages = data.languages;
 
+  let entriesCount = - 1; // Gotta desconsider the name
+  Object.entries(contact).map(([key, value], index) => 
+    value.value != '' ? entriesCount++ : null
+  )
+
   return (
     <div className={`resume ${isMobile ? 'resume-mobile' : ''}`}>
         {/* CONTACT */}
@@ -42,7 +47,7 @@ export default function Resume({data, isMobile}) {
                         <a className={'contact-link'} href={value.value}>
                           {value.value}
                         </a>
-                        {index < 5 && <span> • </span>}
+                        {index < entriesCount && <span> • </span>}
                       </div>
                     );
                   };
@@ -51,7 +56,7 @@ export default function Resume({data, isMobile}) {
                     <div className="entry-wrapper" key={key}>
                       <p>
                         {value.value}
-                        {index < 5 && <span> • </span>}
+                        {index < entriesCount && <span> • </span>}
                       </p>
                     </div>
                   )

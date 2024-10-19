@@ -9,7 +9,7 @@ export default function LanguagesList({data, onDelete}) {
         <p>
           {entry.data.language.value} - {entry.data.proficiency.value}
         </p>
-        <button className="card-button remove" onClick={() => onDelete('spokenLanguages', entry.id)}>
+        <button className="card-button remove" onClick={() => onDelete('languages', entry.id)}>
           <X/>
         </button>
       </Card>

@@ -17,7 +17,7 @@ export default function ExperienceList({data, onEdit, onDelete}) {
           <div className="card-buttons-wrapper">
             <button 
               className="card-button remove" 
-              onClick={() => onDelete('experienceList', experience.id)}
+              onClick={() => onDelete('experience', experience.id)}
             >
               <X/>
             </button>

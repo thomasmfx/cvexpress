@@ -14,7 +14,7 @@ export default function EducationList({data, onEdit, onDelete}) {
           <div className="card-buttons-wrapper">
             <button 
               className="card-button remove" 
-              onClick={() => onDelete('educationHistory', education.id)}
+              onClick={() => onDelete('education', education.id)}
             >
               <X/>
             </button>

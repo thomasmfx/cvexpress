@@ -230,6 +230,6 @@ export default function resumePDF(data) {
   const original = data.contact[0].data.fullName.value
   const formatedName = formatName(original);
 
-  // return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
-  return pdfMake.createPdf(docDefinition).open();
+  return pdfMake.createPdf(docDefinition).download(`${formatedName}.pdf`)
+  // return pdfMake.createPdf(docDefinition).open();
 }

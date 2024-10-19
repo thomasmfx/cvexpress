@@ -9,7 +9,7 @@ export default function SkillsList({data, onDelete}) {
           <p>{skill.data.skill.value}</p>
           <button 
             className="card-button remove" 
-            onClick={() => onDelete('skillSet', skill.id)}
+            onClick={() => onDelete('skills', skill.id)}
           >
             <X/>
           </button>
