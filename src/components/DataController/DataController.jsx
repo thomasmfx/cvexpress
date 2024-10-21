@@ -48,10 +48,12 @@ export default function DataController({
   
   function handleFormSubmit(e, formData) {
     e.preventDefault();
-    if (dataName !== 'skills' || dataName !== 'languages') closeForm(); // We don't want the user frustatingly opening the form over and over, right?
+    
+    // We don't want the user frustatingly opening the form over and over, right?
+    if (dataName !== 'skills') closeForm();
     setIsEditingData(false);
 
-    // If the data is contact, onSave is passed as 'editEntry' in DataController, explanation also there
+    // If the data is contact, onSave is passed as 'editEntry' in DataController
     if (isDataContact) {
       onSave(dataName, formData.id, formData);
       return;

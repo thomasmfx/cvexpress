@@ -71,7 +71,16 @@ export default function resumePDF(data) {
         {
           stack: [
             {text: ' '},
-            {text: `${entry.data.startDate.value} - ${entry.data.endDate.value}`}
+            {text: 
+              `${(entry.data.startDate.value) +
+              
+              (entry.data.startDate.value !== '' && 
+              entry.data.endDate.value !== ''
+                ? ' - '
+                : '')
+
+              + (entry.data.endDate.value)}`
+            }
           ],
           margin: [0, 0, 0, 6],
           alignment: 'right'
@@ -103,7 +112,15 @@ export default function resumePDF(data) {
         {
           stack: [
             {
-              text: `${entry.data.startDate.value} - ${entry.data.endDate.value}`,
+              text: 
+                `${(entry.data.startDate.value) +
+                
+                (entry.data.startDate.value !== '' && 
+                entry.data.endDate.value !== ''
+                  ? ' - '
+                  : '')
+
+                + (entry.data.endDate.value)}`,
               alignment: 'right',
             }, 
             {
@@ -234,6 +251,6 @@ export default function resumePDF(data) {
         ? 'Curriculo'
         : 'Resume';
 
-  return pdfMake.createPdf(docDefinition).download(`${fileName}.pdf`)
   // return pdfMake.createPdf(docDefinition).open();
+  return pdfMake.createPdf(docDefinition).download(`${fileName}.pdf`)
 }

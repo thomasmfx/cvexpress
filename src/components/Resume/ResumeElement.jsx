@@ -68,7 +68,16 @@ export default function Resume({data, isMobile}) {
                   <p className="entry-value"></p>
                   <p className="entry-value">{education.data.course.value}</p>
                   <p className="entry-value">
-                    {education.data.startDate.value} - {education.data.endDate.value}
+                    {education.data.startDate.value} 
+
+                    {
+                      education.data.startDate.value !== '' && 
+                      education.data.endDate.value !== ''
+                        ? ' - '
+                        : null
+                    }
+
+                    {education.data.endDate.value}
                   </p>
                 </Container>
               )}
@@ -85,9 +94,16 @@ export default function Resume({data, isMobile}) {
                 <Container className='entry' key={experience.id}>
                     <p className="entry-value">{experience.data.jobPosition.value}</p>
                     <div className="entry-value">
-                      <p>{experience.data.startDate.value}</p>
-                      &nbsp;-&nbsp;
-                      <p> {experience.data.endDate.value}</p>
+                      {experience.data.startDate.value} 
+
+                      {
+                        experience.data.startDate.value !== '' && 
+                        experience.data.endDate.value !== ''
+                          ? ' - '
+                          : null
+                      }
+
+                      {experience.data.endDate.value}
                     </div>
                     <p className="entry-value">{experience.data.company.value}</p>
                     <p className="entry-value">{experience.data.location.value}</p>

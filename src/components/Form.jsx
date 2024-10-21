@@ -17,14 +17,14 @@ export default function Form({data, dataName, language, isOpened, openFormButton
         ))}
         <div className="form-actions">
           <button 
-            className="button-two" 
+            className="button button-secondary" 
             onClick={() => onClose()}
             type="button"
           >
             {language === 'en' ? 'Cancel' : 'Cancelar'}
           </button>
           <button 
-            className="button-one" 
+            className="button" 
             type="submit"
           >
             {language === 'en' ? 'Save' : 'Salvar'}
@@ -32,7 +32,7 @@ export default function Form({data, dataName, language, isOpened, openFormButton
         </div>
       </form>
       <button 
-        className="button-one button-open-form" 
+        className="button button-open-form" 
         onClick={() => onOpen()}
       >
         {/* Only the contactInformation entry has this property */}
