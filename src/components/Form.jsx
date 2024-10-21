@@ -21,13 +21,13 @@ export default function Form({data, dataName, language, isOpened, openFormButton
             onClick={() => onClose()}
             type="button"
           >
-            Cancel
+            {language === 'en' ? 'Cancel' : 'Cancelar'}
           </button>
           <button 
             className="button-one" 
             type="submit"
           >
-            Save
+            {language === 'en' ? 'Save' : 'Salvar'}
           </button>
         </div>
       </form>
