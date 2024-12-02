@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { GraduationCap, BriefcaseBusiness, CircleUserRound, Languages, PencilRuler } from "lucide-react";
 // import { newContact } from "./models/helpers/contact";
 import { newEducation } from "./models/helpers/education";
 import { newExperience } from "./models/helpers/experience";
@@ -50,7 +51,10 @@ function App() {
     />
     <main className="main">
       <section className="section-form">
-        <Dropdown title={getFieldTranslation('contact', language)}>
+        <Dropdown 
+          title={getFieldTranslation('contact', language)}
+          icon={<CircleUserRound />}
+        >
           {/* 
           The behavior of modifying the contact is quite different. Since there's only one entry, and it's impossible to
           create a new contact entry or delete the existing one (actually, it's possible, but i built it this way), the user is gonna always edit the current contact information instead.
@@ -65,7 +69,10 @@ function App() {
             onSave={editEntry}
           />
         </Dropdown>
-        <Dropdown title={getFieldTranslation('education', language)}>
+        <Dropdown 
+          title={getFieldTranslation('education', language)}
+          icon={<GraduationCap />}
+        >
           <DataController
             language={language}
             data={resumeData.education}
@@ -77,7 +84,10 @@ function App() {
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={getFieldTranslation('experience', language)}>
+        <Dropdown 
+          title={getFieldTranslation('experience', language)}
+          icon={<BriefcaseBusiness />}
+        >
           <DataController
             language={language}
             data={resumeData.experience}
@@ -89,7 +99,10 @@ function App() {
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={getFieldTranslation('skills', language)}>
+        <Dropdown 
+          title={getFieldTranslation('skills', language)}
+          icon={<PencilRuler />}
+        >
           <DataController
             language={language}
             data={resumeData.skills}
@@ -100,7 +113,10 @@ function App() {
             onDelete={deleteEntry}
           />
         </Dropdown>
-        <Dropdown title={getFieldTranslation('languages', language)}>
+        <Dropdown 
+          title={getFieldTranslation('languages', language)}
+          icon={<Languages />}
+        >
           <DataController
             language={language}
             data={resumeData.languages}

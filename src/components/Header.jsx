@@ -1,4 +1,4 @@
-import { Download, ChartNoAxesGantt, Languages } from 'lucide-react';
+import { Download, ChartNoAxesGantt, Globe } from 'lucide-react';
 
 export default function Header({language, onToggleLanguage, onDownload}) {
   const styles = {
@@ -16,7 +16,7 @@ export default function Header({language, onToggleLanguage, onDownload}) {
       </div>
       <nav className="nav">
         <button className='nav-button' onClick={() => onToggleLanguage()}>
-          <Languages size={styles.size}/>
+          <Globe size={styles.size}/>
             {language === 'en'
               ? (
                 <span>EN-US</span>

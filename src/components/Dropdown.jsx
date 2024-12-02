@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronUp } from "lucide-react"
 
-export default function Dropdown({title, children}) {
+export default function Dropdown({title, children, icon}) {
   const [displayContent, setDisplayContent] = useState(false);
 
   function handleDisplayContent() {
@@ -11,7 +11,10 @@ export default function Dropdown({title, children}) {
   return (
     <div className={`dropdown ${displayContent ? 'is-opened' : 'not-opened'}`} >
       <div className="dropdown-header" onClick={handleDisplayContent}>
-        <h2 className="dropdown-title">{title}</h2>
+        <div style={{display: 'flex', alignItems: 'center', gap: '1em'}}>
+          <div className="dropdown-icon">{icon}</div>
+          <h2 className="dropdown-title">{title}</h2>
+        </div>
         <ChevronUp
           className="dropdown-arrow" 
           size='28px' 
